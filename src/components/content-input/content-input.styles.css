@@ -1,0 +1,20 @@
+.contentInput {
+  width: 510px;
+  display: flex;
+  align-items: center;
+  margin: 10px;
+}
+
+.contentInput > p {
+  outline: none;
+  width: 100%;
+  font-size: 50px;
+  padding: 2px 4px;
+  border-radius: 5px;
+  background: transparent;
+  transition: all 0.2s ease;
+}
+
+.contentInput > p:focus {
+  background: rgba(128, 128, 128, 0.2);
+}
