@@ -1,0 +1,51 @@
+.profilepicture {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.profilepicture > .MuiAvatar-root {
+  width: 100%;
+  height: 100%;
+}
+
+.profilepicture__background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.profilepicture__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  opacity: 0;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  transition: all 0.2s ease;
+}
+
+.profilepicture__overlay > .MuiSvgIcon-root {
+  font-size: 32px;
+}
+
+.profilepicture:hover > .profilepicture__overlay {
+  opacity: 1;
+}
