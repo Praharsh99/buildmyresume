@@ -5,7 +5,7 @@ import './content-input.styles.css';
 const ContentInput = () => {
   return (
     <div className="contentInput">
-      <p contentEditable={true}></p>
+      <p placeholder="Your Name" contentEditable={true}></p>
     </div>
   );
 };

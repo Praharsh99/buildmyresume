@@ -1,0 +1,27 @@
+.toolBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999999;
+  padding: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+}
+
+.toolBar > div {
+  border-radius: 12px;
+  padding: 40px 100px;
+  background: #252525;
+  margin: 0 8px;
+  box-shadow: 0 0 30px 5px rgba(0, 0, 0, 0.2);
+}
+
+.toolBar > div:first-child {
+}
+
+.toolBar > div:last-child,
+.toolBar > div:nth-child(2) {
+}

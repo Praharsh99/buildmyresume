@@ -9,7 +9,7 @@
   outline: none;
   width: 100%;
   font-size: 50px;
-  padding: 2px 4px;
+  padding: 2px 8px;
   border-radius: 5px;
   background: transparent;
   transition: all 0.2s ease;
@@ -17,4 +17,10 @@
 
 .contentInput > p:focus {
   background: rgba(128, 128, 128, 0.2);
+}
+
+.contentInput > p:empty:before {
+  content: attr(placeholder);
+  pointer-events: none;
+  color: #bdbdbd;
 }
