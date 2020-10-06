@@ -20,8 +20,16 @@
 }
 
 .toolBar > div:first-child {
+  background: #bb3d76;
+  filter: hue-rotate(180deg) brightness(150%);
 }
 
-.toolBar > div:last-child,
+/* .toolBar > div:last-child,
 .toolBar > div:nth-child(2) {
-}
+} */
+
+/* background: #3083dc; */
+/* background: #e76650; */
+/* background: #bb3d76; */
+/* background: #4fb298; */
+/* background: #bababa; */

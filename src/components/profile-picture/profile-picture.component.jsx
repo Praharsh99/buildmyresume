@@ -8,9 +8,9 @@ import './profile-picture.styles.css';
 const ProfilePicture = ({ profilePictureURL }) => {
   const [imageUrl, setImageURL] = useState(null);
 
-  const style = {
-    backgroundImage: `url(${imageUrl})`,
-  };
+  // const style = {
+  //   backgroundImage: `url(${imageUrl})`,
+  // };
 
   const handleClick = () => {
     const imageInput = document.createElement('input');
@@ -38,13 +38,10 @@ const ProfilePicture = ({ profilePictureURL }) => {
   };
 
   return (
-    <div className="profilepicture" onClick={handleClick}>
-      {imageUrl ? (
-        <div style={style} className="profilepicture__background"></div>
-      ) : (
-        <Avatar />
-      )}
-      <div className="profilepicture__overlay">
+    <div className="profilepicture">
+      <Avatar src={imageUrl} />
+
+      <div className="profilepicture__overlay" onClick={handleClick}>
         <CameraAltIcon />
         <span>Choose an image</span>
       </div>
