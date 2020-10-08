@@ -2,6 +2,14 @@
 
 .app {
   background: #bb3d76;
+  /* background: linear-gradient(
+    45deg,
+    #bb3d76,
+    #e76650,
+    #4fb298,
+    #3083dc,
+    #e1f015
+  ); */
   padding: 20px 0;
   filter: brightness(105%);
 }

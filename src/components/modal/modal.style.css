@@ -1,0 +1,55 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 999999;
+  animation: fadeIn 0.2s linear;
+}
+
+.modalCard {
+  position: sticky;
+  top: 50%;
+  left: 50%;
+  border-radius: 24px;
+  background: #fff;
+  padding: 20px 10px;
+  max-width: 800px;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.45);
+}
+
+.modalContent {
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.modalContent__closeBtn {
+  position: absolute;
+  right: -18px;
+  top: -25px;
+  cursor: pointer;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.45);
+}
+
+.modalContent__closeBtn > .MuiSvgIcon-root {
+  font-size: 32px;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

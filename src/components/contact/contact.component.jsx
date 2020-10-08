@@ -28,7 +28,7 @@ const Contact = () => {
             src="https://img.icons8.com/color/48/000000/gmail.png"
             alt="Email"
           />
-          <ContentInput placeholder="Enter your email" style={style2} />
+          <ContentInput placeholder="Email address" style={style2} />
         </div>
 
         <div className="contact__section">
@@ -36,7 +36,7 @@ const Contact = () => {
             src="https://img.icons8.com/doodle/64/000000/iphone-x.png"
             alt="Phone"
           />
-          <ContentInput placeholder="Enter your number" style={style2} />
+          <ContentInput placeholder="Mobile Number" style={style2} />
         </div>
 
         <div className="contact__section">
@@ -60,7 +60,7 @@ const Contact = () => {
             src="https://img.icons8.com/fluent/48/000000/code.png"
             alt="Portfolio"
           />
-          <ContentInput placeholder="Your website address" style={style2} />
+          <ContentInput placeholder="Portfolio link" style={style2} />
         </div>
       </div>
     </div>

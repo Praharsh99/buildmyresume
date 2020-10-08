@@ -1,0 +1,31 @@
+.skills__sub {
+  margin: 10px 0;
+}
+
+.skills__sub .MuiIconButton-root {
+  padding: 8px;
+}
+
+.skills__sub .MuiSvgIcon-root {
+  font-size: 30px;
+}
+
+.skills__languageLogos {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  overflow: auto;
+}
+
+.skills__languageLogos img {
+  width: 42px;
+  margin: 10px;
+}
+
+.skills__languageLogos .MuiIconButton-root {
+  padding: 4px;
+}
+
+.modal__closed {
+  display: none !important;
+}

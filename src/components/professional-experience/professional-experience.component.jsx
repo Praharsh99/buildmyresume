@@ -42,11 +42,11 @@ const ProfessionalExp = () => {
       <div className="professionalExperience__sub">
         <div className="professionalExperience__section">
           {/* TODO: Add the interaction buttons to each section */}
-          <ContentInput placeholder="Position" style={style2} />
+          <ContentInput placeholder="Position" placeholderBold style={style2} />
 
           <ContentInput
             placeholder="Company Name"
-            placeholderBold
+            placeholderSemiBold
             style={style3}
           />
 
@@ -59,11 +59,11 @@ const ProfessionalExp = () => {
 
         <div className="professionalExperience__section">
           {/* TODO: Add the interaction buttons to each section */}
-          <ContentInput placeholder="Position" style={style2} />
+          <ContentInput placeholder="Position" placeholderBold style={style2} />
 
           <ContentInput
             placeholder="Company Name"
-            placeholderBold
+            placeholderSemiBold
             style={style3}
           />
 
@@ -73,13 +73,14 @@ const ProfessionalExp = () => {
             placeholderSemiBold
           />
         </div>
+
         <div className="professionalExperience__section">
           {/* TODO: Add the interaction buttons to each section */}
-          <ContentInput placeholder="Position" style={style2} />
+          <ContentInput placeholder="Position" placeholderBold style={style2} />
 
           <ContentInput
             placeholder="Company Name"
-            placeholderBold
+            placeholderSemiBold
             style={style3}
           />
 
@@ -89,13 +90,14 @@ const ProfessionalExp = () => {
             placeholderSemiBold
           />
         </div>
+
         <div className="professionalExperience__section">
           {/* TODO: Add the interaction buttons to each section */}
-          <ContentInput placeholder="Position" style={style2} />
+          <ContentInput placeholder="Position" placeholderBold style={style2} />
 
           <ContentInput
             placeholder="Company Name"
-            placeholderBold
+            placeholderSemiBold
             style={style3}
           />
 

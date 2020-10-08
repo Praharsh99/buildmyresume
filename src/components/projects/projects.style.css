@@ -1,0 +1,32 @@
+.projects {
+  width: 100%;
+}
+
+.projects__section {
+  margin: 4px 0;
+  padding: 4px;
+  border: 2px dashed transparent;
+  transition: all 0.2s ease;
+}
+
+.projects__section:hover {
+  border-color: #d1d1d1;
+}
+
+.projects__sectionName {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.projects__sectionName > div:first-child {
+  width: 80%;
+}
+
+.projects__sectionName > div:last-child {
+  margin-right: 20px;
+}
+
+.projects__sectionName > div:last-child > img {
+  width: 26px;
+}
