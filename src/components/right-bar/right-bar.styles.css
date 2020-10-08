@@ -3,3 +3,11 @@
   margin-left: 40px;
   margin-top: 40px;
 }
+
+.rightBar > div {
+  margin-bottom: 20px;
+}
+
+.rightBar > div:last-child {
+  margin-bottom: 0;
+}
