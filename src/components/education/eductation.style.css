@@ -1,0 +1,80 @@
+.education {
+  width: 100%;
+}
+
+.education__sub {
+  position: relative;
+  overflow: hidden;
+}
+
+.education__sub::before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 3px;
+  background: #000;
+  opacity: 0.2;
+  top: 30px;
+  left: 15px;
+}
+
+.education__sub > .education__section:last-child::after {
+  content: '';
+  position: absolute;
+  background: rgb(255, 255, 255);
+  height: 100%;
+  width: 5px;
+  top: 30px;
+  left: 12px;
+}
+
+/* .education__timeline {
+  position: absolute;
+  height: 100%;
+  width: 3px;
+  background: #000;
+  opacity: 0.2;
+  top: 30px;
+  left: 15px;
+} */
+
+.education__section {
+  position: relative;
+  margin: 2px 0;
+  padding: 4px 0;
+  padding-left: 32px;
+  border: 2px dashed transparent;
+  transition: all 0.2s ease;
+}
+
+.education__section::before {
+  content: '';
+  position: absolute;
+  background: #bb3d76;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  padding: 7px;
+  top: 9px;
+  left: 1.8px;
+  z-index: 2;
+}
+
+.education__section:hover {
+  border-color: #d1d1d1;
+}
+
+.education__sectionSubPart {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2px;
+}
+
+.education__sectionSubPart > div:first-child {
+  width: 80% !important;
+}
+
+.education__sectionSubPart > div:last-child {
+  width: 15% !important;
+}

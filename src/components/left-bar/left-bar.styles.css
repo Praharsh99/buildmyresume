@@ -1,0 +1,8 @@
+.leftBar {
+  width: 25%;
+  padding-top: 40px;
+}
+
+.leftBar > div {
+  margin-bottom: 30px;
+}

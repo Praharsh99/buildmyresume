@@ -1,18 +1,19 @@
 .contentInput {
-  width: 510px;
+  width: 100%;
   display: flex;
   align-items: center;
-  margin: 10px;
 }
 
 .contentInput > p {
   outline: none;
   width: 100%;
-  font-size: 50px;
-  padding: 2px 8px;
+  font-size: 55px;
+  padding: 0 5px;
   border-radius: 5px;
   background: transparent;
   transition: all 0.2s ease;
+  font-family: Poppins, sans-serif;
+  line-height: 1.4;
 }
 
 .contentInput > p:focus {
@@ -22,5 +23,13 @@
 .contentInput > p:empty:before {
   content: attr(placeholder);
   pointer-events: none;
-  color: #bdbdbd;
+  color: #999999;
+}
+
+.placeholderBold > p:empty::before {
+  color: #808080;
+}
+
+.placeholderSemiBold > p:empty::before {
+  color: #9c9c9c;
 }

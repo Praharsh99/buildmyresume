@@ -1,0 +1,13 @@
+.contact__section {
+  display: flex;
+  align-items: center;
+  margin: 18px 0;
+}
+
+.contact__section > img {
+  width: 26px;
+}
+
+.contact__section > div {
+  margin-left: 12px;
+}

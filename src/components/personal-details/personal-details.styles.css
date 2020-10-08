@@ -1,0 +1,7 @@
+.personalDetails__section {
+  margin: 12px 0;
+}
+
+.personalDetails__section > .contentInput:first-child {
+  margin-bottom: 0.05px;
+}

@@ -2,10 +2,25 @@ import React from 'react';
 
 import './content-input.styles.css';
 
-const ContentInput = () => {
+const ContentInput = ({
+  content,
+  placeholderBold,
+  placeholderSemiBold,
+  ...otherProps
+}) => {
   return (
-    <div className="contentInput">
-      <p placeholder="Your Name" contentEditable={true}></p>
+    <div
+      className={`contentInput ${placeholderBold && 'placeholderBold'} ${
+        placeholderSemiBold && 'placeholderSemiBold'
+      }`}
+    >
+      <p
+        placeholder="Placeholder Here..."
+        contentEditable={true}
+        {...otherProps}
+      >
+        {content}
+      </p>
     </div>
   );
 };
