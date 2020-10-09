@@ -9,6 +9,7 @@
   align-items: center;
   background: transparent;
   color: #fff;
+  animation: moveDown 0.3s ease;
 }
 
 .toolBar > div {
@@ -227,5 +228,15 @@
 
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes moveDown {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(0);
   }
 }

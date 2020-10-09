@@ -1,0 +1,36 @@
+.professionalExperience__section {
+  position: relative;
+  margin: 2px 0;
+  padding: 4px 0;
+  padding-left: 32px;
+  border: 2px dashed transparent;
+  transition: all 0.2s ease;
+}
+
+.professionalExperience__timelineDot {
+  content: '';
+  position: absolute;
+  background: #bb3d76;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  padding: 7px;
+  top: 5px;
+  left: 1.8px;
+  z-index: 2;
+}
+
+.professionalExperience__section:hover {
+  border-color: #d1d1d1;
+}
+
+.professionalExperience__section:hover .utilBtns {
+  opacity: 1;
+}
+
+.professionalExperience__section--dragging {
+  box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.3);
+  opacity: 1;
+  /* width: 200px;
+  height: 200px;
+  z-index: 1000; */
+}
