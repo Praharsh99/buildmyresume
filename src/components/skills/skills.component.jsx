@@ -10,7 +10,7 @@ import Logos from '../../assets/logos';
 import './skills.style.css';
 
 const Skills = () => {
-  const [toggleModal, setToggleModal] = useState(false);
+  const [toggleModal, setToggleModal] = useState(true);
 
   const handleLanguageModal = () => {
     setToggleModal(!toggleModal);

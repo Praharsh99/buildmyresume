@@ -1,8 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800&display=swap');
 
 .app {
-  background: #bb3d76;
-  /* background: linear-gradient(
+  padding: 20px 0;
+  filter: brightness(105%);
+}
+
+/* background: linear-gradient(
     45deg,
     #bb3d76,
     #e76650,
@@ -10,12 +17,3 @@
     #3083dc,
     #e1f015
   ); */
-  padding: 20px 0;
-  filter: brightness(105%);
-}
-
-/* background: #3083dc; */
-/* background: #e76650; */
-/* background: #bb3d76; */
-/* background: #4fb298; */
-/* background: #bababa; */

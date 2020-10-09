@@ -1,35 +1,231 @@
 .toolBar {
-  position: fixed;
-  top: 0;
+  position: sticky;
+  top: 25px;
   left: 0;
   right: 0;
   z-index: 999999;
-  padding: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
   background: transparent;
+  color: #fff;
 }
 
 .toolBar > div {
   border-radius: 12px;
-  padding: 40px 100px;
   background: #252525;
   margin: 0 8px;
   box-shadow: 0 0 30px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  height: 100px;
 }
 
-.toolBar > div:first-child {
+.toolBar__color {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px;
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.toolBar__colorDropdown {
+  position: absolute;
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  top: 120%;
+  left: 50%;
+  z-index: 99;
+  transform: translateX(-50%);
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+  animation: moveInFadeIn 0.3s linear;
+}
+
+.toolBar__colorDropdown::before {
+  content: '';
+  position: absolute;
+  background: #fff;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  height: 20px;
+  width: 20px;
+}
+
+.toolBar__colorDropdown > span {
+  border-radius: 50%;
+  padding: 20px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.toolBar__colorDropdown > span:nth-child(1) {
+  background-color: #3083dc;
+}
+
+.toolBar__colorDropdown > span:nth-child(2) {
+  background-color: #4fb298;
+}
+
+.toolBar__colorDropdown > span:nth-child(3) {
+  background-color: #e76650;
+}
+
+.toolBar__colorDropdown > span:nth-child(4) {
+  background-color: #bb3d76;
+}
+
+.toolBar__color > span:first-child {
+  border-radius: 50%;
   background: #bb3d76;
-  filter: hue-rotate(180deg) brightness(150%);
+  padding: 20px;
+  cursor: pointer;
 }
 
-/* .toolBar > div:last-child,
-.toolBar > div:nth-child(2) {
-} */
+.toolBar__title {
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-top: 12px;
+}
 
-/* background: #3083dc; */
-/* background: #e76650; */
-/* background: #bb3d76; */
-/* background: #4fb298; */
-/* background: #bababa; */
+.toolBar__typography {
+  padding: 12px;
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.toolBar__typography > select {
+  width: 140px;
+  background: #fff;
+  padding: 10px 8px;
+  font-size: 14px;
+  border-radius: 4px;
+  outline: none;
+}
+
+.toolBar__textSize {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.toolBar__textSize > div:first-child {
+  display: flex;
+  font-family: serif;
+  align-items: center;
+}
+
+.toolBar__textSize > div:first-child > span {
+  cursor: pointer;
+  margin: 0 5px;
+  color: rgba(255, 255, 255, 0.5);
+  user-select: none;
+  transition: color 0.2s ease;
+}
+
+.toolBar__textSize > div:first-child > span:hover {
+  color: #fff;
+}
+
+.toolBar__textSize > div:first-child > span:nth-child(1) {
+  font-size: 18px;
+}
+
+.toolBar__textSize > div:first-child > span:nth-child(2) {
+  font-size: 32px;
+}
+
+.toolBar__textSize > div:first-child > span:nth-child(3) {
+  font-size: 44px;
+}
+
+.toolBar__similar {
+  cursor: pointer;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.toolBar__similar .MuiSvgIcon-root {
+  font-size: 42px;
+  color: rgba(255, 255, 255, 0.4);
+  transition: color 0.2s ease;
+}
+
+.toolBar__similar .MuiSvgIcon-root:hover {
+  color: #fff;
+}
+
+.toolBar__save {
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.toolBar__utils {
+  display: flex;
+  align-items: center;
+  padding: 14px;
+  height: 100%;
+}
+
+.toolBar__utils .MuiSvgIcon-root {
+  font-size: 32px;
+  color: rgba(255, 255, 255, 0.4);
+  transition: color 0.2s ease;
+  cursor: pointer;
+}
+
+.toolBar__utils .MuiSvgIcon-root:hover {
+  color: #fff;
+}
+
+.toolBar__utils > span {
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-left: 10px;
+}
+
+.toolBar__download {
+  filter: hue-rotate(180deg) brightness(130%);
+  color: #000;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  cursor: pointer;
+}
+
+.toolBar__download .MuiSvgIcon-root {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.toolBar__download .MuiSvgIcon-root:hover {
+  color: #000;
+}
+
+@keyframes moveInFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10%);
+  }
+
+  65% {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

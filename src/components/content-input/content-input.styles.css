@@ -33,3 +33,23 @@
 .placeholderSemiBold > p:empty::before {
   color: #9c9c9c;
 }
+
+.contentInput--Poppins {
+  font-family: Poppins, sans-serif !important;
+}
+
+.contentInput--Raleway {
+  font-family: Raleway, sans-serif !important;
+}
+
+.contentInput--Barlow {
+  font-family: Barlow, sans-serif !important;
+}
+
+.contentInput--Lato {
+  font-family: Lato, sans-serif !important;
+}
+
+.contentInput--Nunito {
+  font-family: Nunito, sans-serif !important;
+}

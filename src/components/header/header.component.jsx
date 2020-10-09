@@ -1,14 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import ProfilePicture from '../profile-picture/profile-picture.component';
 import ContentInput from '../content-input/content-input.component';
 
+import { selectMainColor } from '../../redux/resume/resume.selectors';
+
 import './header.styles.css';
 
-const Header = () => {
+const Header = ({ mainColor }) => {
   const style1 = {
     fontWeight: '600',
-    color: '#bb3d76',
+    color: `${mainColor}`,
   };
 
   const style2 = {
@@ -34,4 +37,8 @@ const Header = () => {
   );
 };
 
-export default Header;
+const mapStateToProps = (state) => ({
+  mainColor: selectMainColor(state),
+});
+
+export default connect(mapStateToProps)(Header);

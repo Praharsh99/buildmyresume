@@ -37,10 +37,8 @@
   transition: all 0.2s ease;
 }
 
-.education__section::before {
-  content: '';
+.education__timelineDot {
   position: absolute;
-  background: #bb3d76;
   border-radius: 50%;
   border: 6px solid #fff;
   padding: 7px;

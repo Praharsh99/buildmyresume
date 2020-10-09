@@ -38,7 +38,7 @@
   transition: all 0.2s ease;
 }
 
-.professionalExperience__section::before {
+.professionalExperience__timelineDot {
   content: '';
   position: absolute;
   background: #bb3d76;

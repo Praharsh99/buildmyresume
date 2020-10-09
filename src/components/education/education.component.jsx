@@ -1,10 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import ContentInput from '../content-input/content-input.component';
 
+import { selectMainColor } from '../../redux/resume/resume.selectors';
+
 import './eductation.style.css';
 
-const Education = () => {
+const Education = ({ mainColor }) => {
   const style1 = {
     textTransform: 'uppercase',
     fontSize: '18px',
@@ -14,7 +17,7 @@ const Education = () => {
 
   const style2 = {
     fontSize: '18px',
-    color: '#bb3d76',
+    color: `${mainColor}`,
     fontWeight: '700',
   };
 
@@ -32,6 +35,10 @@ const Education = () => {
     textAlign: 'center',
   };
 
+  const style5 = {
+    backgroundColor: `${mainColor}`,
+  };
+
   return (
     <div className="education">
       <ContentInput
@@ -42,6 +49,7 @@ const Education = () => {
 
       <div className="education__sub">
         <div className="education__section">
+          <div className="education__timelineDot" style={style5}></div>
           {/* TODO: Add the interaction buttons to each section */}
           <ContentInput placeholder="Degree" style={style2} />
 
@@ -53,6 +61,7 @@ const Education = () => {
         </div>
 
         <div className="education__section">
+          <div className="education__timelineDot" style={style5}></div>
           {/* TODO: Add the interaction buttons to each section */}
           <ContentInput placeholder="Degree" style={style2} />
 
@@ -64,6 +73,7 @@ const Education = () => {
         </div>
 
         <div className="education__section">
+          <div className="education__timelineDot" style={style5}></div>
           {/* TODO: Add the interaction buttons to each section */}
           <ContentInput placeholder="Degree" style={style2} />
 
@@ -78,4 +88,8 @@ const Education = () => {
   );
 };
 
-export default Education;
+const mapStateToProps = (state) => ({
+  mainColor: selectMainColor(state),
+});
+
+export default connect(mapStateToProps)(Education);
