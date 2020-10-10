@@ -12,8 +12,11 @@ const ProjectSection = ({
   mainColor,
   id,
   length,
+  position,
   handleAddClick,
   handleRemoveClick,
+  handleSortDownClick,
+  handleSortUpClick,
 }) => {
   const style1 = {
     fontSize: '18px',
@@ -24,6 +27,8 @@ const ProjectSection = ({
   const style2 = {
     fontSize: '14px',
     fontWeight: '400',
+    marginTop: '-1px',
+    marginBottom: '5px',
   };
 
   const style3 = {
@@ -36,24 +41,16 @@ const ProjectSection = ({
     <div className="projects__section">
       <UtilBtns
         isOne={length === 1 ? true : false}
+        cantMoveDown={length - 1 === position ? true : false}
+        cantMoveUp={position === 0 ? true : false}
         handleAddClick={handleAddClick}
         handleRemoveClick={handleRemoveClick}
+        handleSortDownClick={handleSortDownClick}
+        handleSortUpClick={handleSortUpClick}
+        id={id}
       />
 
-      <div className="projects__sectionName">
-        <ContentInput
-          placeholder="Project Name"
-          placeholderBold
-          style={style1}
-        />
-
-        <div>
-          <img
-            src="https://img.icons8.com/color/50/000000/react-native.png"
-            alt="react"
-          />
-        </div>
-      </div>
+      <ContentInput placeholder="Project Name" placeholderBold style={style1} />
 
       <ContentInput placeholder="Subtitle" placeholderSemiBold style={style2} />
 

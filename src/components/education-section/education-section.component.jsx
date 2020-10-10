@@ -12,8 +12,11 @@ const EducationSection = ({
   mainColor,
   id,
   length,
+  position,
   handleAddClick,
   handleRemoveClick,
+  handleSortDownClick,
+  handleSortUpClick,
 }) => {
   const style1 = {
     backgroundColor: `${mainColor}`,
@@ -43,8 +46,13 @@ const EducationSection = ({
     <div className="education__section">
       <UtilBtns
         isOne={length === 1 ? true : false}
+        cantMoveDown={length - 1 === position ? true : false}
+        cantMoveUp={position === 0 ? true : false}
         handleAddClick={handleAddClick}
         handleRemoveClick={handleRemoveClick}
+        handleSortDownClick={handleSortDownClick}
+        handleSortUpClick={handleSortUpClick}
+        id={id}
       />
 
       <div className="education__timelineDot" style={style1}></div>

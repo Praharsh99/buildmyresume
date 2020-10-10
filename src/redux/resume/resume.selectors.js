@@ -11,3 +11,8 @@ export const selectMainFont = createSelector(
   [selectResume],
   (resume) => resume.font
 );
+
+export const selectSkills = createSelector(
+  [selectResume],
+  (resume) => resume.skills
+);

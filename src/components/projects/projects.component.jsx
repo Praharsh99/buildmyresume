@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { AnimatedList } from 'react-animated-list';
 
 import ContentInput from '../content-input/content-input.component';
 import ProjectSection from '../projects-section/projects-section.component';
 
-import { selectMainColor } from '../../redux/resume/resume.selectors';
-
 import './projects.style.css';
 
-const Projects = ({ mainColor }) => {
-  const [projectSection, setProjectSection] = useState(1);
+const Projects = () => {
+  const [counter, setCounter] = useState(0);
+  const [projectSection, setProjectSection] = useState([
+    {
+      id: counter,
+    },
+  ]);
 
   const style1 = {
     textTransform: 'uppercase',
@@ -20,11 +22,41 @@ const Projects = ({ mainColor }) => {
   };
 
   const handleAddClick = (e) => {
-    setProjectSection(projectSection + 1);
+    setProjectSection([
+      ...projectSection,
+      {
+        id: counter + 1,
+      },
+    ]);
+    setCounter(counter + 1);
   };
 
-  const handleRemoveClick = (e) => {
-    setProjectSection(projectSection - 1);
+  const handleSortDownClick = (e, id) => {
+    const idx = projectSection.findIndex((section) => section.id === id);
+
+    if (idx < projectSection.length - 1) {
+      const newCopy = [...projectSection];
+
+      [newCopy[idx + 1], newCopy[idx]] = [newCopy[idx], newCopy[idx + 1]];
+
+      setProjectSection(newCopy);
+    }
+  };
+
+  const handleSortUpClick = (e, id) => {
+    const idx = projectSection.findIndex((section) => section.id === id);
+
+    if (idx !== 0) {
+      const newCopy = [...projectSection];
+
+      [newCopy[idx - 1], newCopy[idx]] = [newCopy[idx], newCopy[idx - 1]];
+
+      setProjectSection(newCopy);
+    }
+  };
+
+  const handleRemoveClick = (e, id) => {
+    setProjectSection(projectSection.filter((section) => section.id !== id));
   };
 
   return (
@@ -36,24 +68,23 @@ const Projects = ({ mainColor }) => {
       />
 
       <div className="projects__sub">
-        <AnimatedList animation={'fade'}>
-          {[...Array(projectSection).keys()].map((_i) => (
-            <ProjectSection
-              key={_i}
-              id={_i}
-              length={projectSection}
-              handleAddClick={handleAddClick}
-              handleRemoveClick={handleRemoveClick}
-            />
-          ))}
-        </AnimatedList>
+        {projectSection?.map((item, position) => (
+          <ProjectSection
+            key={item.id}
+            id={item.id}
+            position={position}
+            length={projectSection.length}
+            handleAddClick={handleAddClick}
+            handleRemoveClick={handleRemoveClick}
+            handleSortDownClick={handleSortDownClick}
+            handleSortUpClick={handleSortUpClick}
+          />
+        ))}
       </div>
     </div>
   );
 };
 
-const mapStateToProps = (state) => ({
-  mainColor: selectMainColor(state),
-});
+const mapStateToProps = (state) => ({});
 
 export default connect(mapStateToProps)(Projects);

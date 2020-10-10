@@ -1,5 +1,6 @@
 .skills__sub {
   margin: 10px 0;
+  width: 100%;
 }
 
 .skills__sub .MuiIconButton-root {
@@ -7,7 +8,10 @@
 }
 
 .skills__sub .MuiSvgIcon-root {
-  font-size: 30px;
+  font-size: 32px;
+  padding: 2px;
+  border-radius: 50%;
+  box-shadow: 0 0px 6px rgba(0, 0, 0, 0.2);
 }
 
 .skills__languageLogos {

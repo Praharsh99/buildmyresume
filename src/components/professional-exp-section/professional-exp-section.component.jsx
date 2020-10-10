@@ -12,11 +12,12 @@ const ProfessionalExpSection = ({
   mainColor,
   id,
   length,
+  position,
   handleAddClick,
   handleRemoveClick,
+  handleSortDownClick,
+  handleSortUpClick,
 }) => {
-  const [dragging, setDragging] = useState(false);
-
   const style1 = {
     backgroundColor: `${mainColor}`,
   };
@@ -40,28 +41,17 @@ const ProfessionalExpSection = ({
     padding: '3px 5px',
   };
 
-  const handleDrag = (e) => {
-    console.log(e);
-    setDragging(true);
-  };
-
-  const handleDragEnd = (e) => {
-    setDragging(false);
-  };
-
   return (
-    <div
-      className={`professionalExperience__section ${
-        dragging && 'professionalExperience__section--dragging'
-      }`}
-      draggable={true}
-      onDragStart={handleDrag}
-      onDragEnd={handleDragEnd}
-    >
+    <div className="professionalExperience__section">
       <UtilBtns
         isOne={length === 1 ? true : false}
+        cantMoveDown={length - 1 === position ? true : false}
+        cantMoveUp={position === 0 ? true : false}
         handleAddClick={handleAddClick}
         handleRemoveClick={handleRemoveClick}
+        handleSortDownClick={handleSortDownClick}
+        handleSortUpClick={handleSortUpClick}
+        id={id}
       />
 
       <div className="professionalExperience__timelineDot" style={style1}></div>

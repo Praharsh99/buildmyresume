@@ -9,21 +9,11 @@
 .professionalExperience__sub::before {
   content: '';
   position: absolute;
-  height: 88%;
+  height: 75%;
   width: 2px;
   background: #000;
   opacity: 0.2;
   top: 30px;
   left: 15.5px;
-}
-
-.professionalExperience__sub
-  .professionalExperience__section:last-child::after {
-  content: '';
-  position: absolute;
-  background: rgb(255, 255, 255);
-  height: 90%;
-  width: 5px;
-  top: 30px;
-  left: 12px;
+  z-index: 1;
 }

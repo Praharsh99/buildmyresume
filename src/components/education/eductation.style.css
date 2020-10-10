@@ -16,13 +16,3 @@
   top: 30px;
   left: 15.5px;
 }
-
-.education__sub .education__section:last-child::after {
-  content: '';
-  position: absolute;
-  background: rgb(255, 255, 255);
-  height: 90%;
-  width: 5px;
-  top: 30px;
-  left: 12px;
-}

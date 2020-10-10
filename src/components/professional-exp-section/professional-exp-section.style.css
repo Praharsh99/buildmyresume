@@ -23,14 +23,17 @@
   border-color: #d1d1d1;
 }
 
-.professionalExperience__section:hover .utilBtns {
-  opacity: 1;
+.professionalExperience__section:last-child::after {
+  content: '';
+  position: absolute;
+  background: rgb(255, 255, 255);
+  height: 80%;
+  width: 2px;
+  top: 30px;
+  left: 13.5px;
+  z-index: 1;
 }
 
-.professionalExperience__section--dragging {
-  box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.3);
+.professionalExperience__section:hover .utilBtns {
   opacity: 1;
-  /* width: 200px;
-  height: 200px;
-  z-index: 1000; */
 }

@@ -13,21 +13,3 @@
 .projects__section:hover .utilBtns {
   opacity: 1;
 }
-
-.projects__sectionName {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.projects__sectionName > div:first-child {
-  width: 80%;
-}
-
-.projects__sectionName > div:last-child {
-  margin-right: 20px;
-}
-
-.projects__sectionName > div:last-child > img {
-  width: 26px;
-}

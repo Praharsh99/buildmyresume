@@ -40,6 +40,10 @@ export default [
     src: 'https://img.icons8.com/color/48/000000/material-ui.png',
   },
   {
+    language: 'graphql',
+    src: 'https://img.icons8.com/color/48/000000/graphql.png',
+  },
+  {
     language: 'angular',
     src: 'https://img.icons8.com/color/48/000000/angularjs.png',
   },
@@ -256,10 +260,6 @@ export default [
   {
     language: 'docker',
     src: 'https://img.icons8.com/color/48/000000/docker.png',
-  },
-  {
-    language: 'heroku',
-    src: 'https://img.icons8.com/color/48/000000/heroku.png',
   },
   {
     language: 'linux',

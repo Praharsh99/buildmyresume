@@ -1,19 +1,29 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 
 import ContentInput from '../content-input/content-input.component';
 import Modal from '../modal/modal.component';
+import SkillsSection from '../skills-section/skills-section.component';
+
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import { IconButton } from '@material-ui/core';
+
+import { selectMainColor } from '../../redux/resume/resume.selectors';
+import { addNewSkill } from '../../redux/resume/resume.actions';
 
 import Logos from '../../assets/logos';
 
 import './skills.style.css';
 
-const Skills = () => {
+const Skills = ({ addNewSkill, mainColor }) => {
   const [toggleModal, setToggleModal] = useState(true);
 
   const handleLanguageModal = () => {
     setToggleModal(!toggleModal);
+  };
+
+  const handleClick = (logo) => {
+    addNewSkill(logo);
   };
 
   const style1 = {
@@ -21,6 +31,10 @@ const Skills = () => {
     fontSize: '18px',
     fontWeight: 'bold',
     color: '#000',
+  };
+
+  const style2 = {
+    color: mainColor,
   };
 
   return (
@@ -32,8 +46,10 @@ const Skills = () => {
       />
 
       <div className="skills__sub">
+        <SkillsSection />
+
         <IconButton onClick={handleLanguageModal}>
-          <AddBoxIcon />
+          <AddBoxIcon style={style2} />
         </IconButton>
       </div>
 
@@ -45,8 +61,14 @@ const Skills = () => {
           <br />
 
           <div className="skills__languageLogos">
-            {Logos.map((logo, idx) => (
-              <IconButton key={idx} title={logo.language}>
+            {Logos?.map((logo, idx) => (
+              <IconButton
+                key={idx}
+                title={logo.language}
+                onClick={(e) => {
+                  handleClick(logo);
+                }}
+              >
                 <img src={logo.src} alt={logo.language} />
               </IconButton>
             ))}
@@ -57,4 +79,12 @@ const Skills = () => {
   );
 };
 
-export default Skills;
+const mapStateToProps = (state) => ({
+  mainColor: selectMainColor(state),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  addNewSkill: (skill) => dispatch(addNewSkill(skill)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Skills);

@@ -21,6 +21,7 @@ const ContentInput = ({
       <p
         placeholder="Placeholder Here..."
         contentEditable={true}
+        suppressContentEditableWarning={true}
         className={`contentInput--${mainFont}`}
         {...otherProps}
       >
@@ -34,4 +35,6 @@ const mapStateToProps = (state) => ({
   mainFont: selectMainFont(state),
 });
 
-export default connect(mapStateToProps)(ContentInput);
+const mapDispatchToProps = (dispatch) => ({});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ContentInput);

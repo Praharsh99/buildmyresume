@@ -9,3 +9,13 @@ export const setMainFont = (font) => ({
   type: ResumeActionTypes.SET_MAIN_FONT,
   payload: font,
 });
+
+export const addNewSkill = (skill) => ({
+  type: ResumeActionTypes.ADD_NEW_SKILL,
+  payload: skill,
+});
+
+export const removeSkill = (skillName) => ({
+  type: ResumeActionTypes.REMOVE_SKILL,
+  payload: skillName,
+});
