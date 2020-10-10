@@ -11,3 +11,10 @@ export const addNewSkillToState = (allSkills, newSkill) => {
 export const removeSkillFromState = (allSkills, skillToRemove) => {
   return allSkills.filter((skill) => skill.language !== skillToRemove);
 };
+
+export const changeSectionState = (allSections, sectionToChange) => {
+  return {
+    ...allSections,
+    [sectionToChange]: !allSections[sectionToChange],
+  };
+};

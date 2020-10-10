@@ -1,24 +1,33 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import Education from '../education/education.component';
 import ProfessionalExp from '../professional-experience/professional-experience.component';
 import Projects from '../projects/projects.component';
 import Skills from '../skills/skills.component';
 
+import { selectSections } from '../../redux/resume/resume.selectors';
+
 import './right-bar.styles.css';
 
-const RightBar = () => {
+const RightBar = ({ sectionData }) => {
   return (
     <div className="rightBar">
-      <ProfessionalExp />
+      <ProfessionalExp
+        className={!sectionData['professional'] && 'section--disabled'}
+      />
 
-      <Education />
+      <Projects className={!sectionData['projects'] && 'section--disabled'} />
 
-      <Projects />
+      <Education className={!sectionData['education'] && 'section--disabled'} />
 
-      <Skills />
+      <Skills className={!sectionData['skills'] && 'section--disabled'} />
     </div>
   );
 };
 
-export default RightBar;
+const mapStateToProps = (state) => ({
+  sectionData: selectSections(state),
+});
+
+export default connect(mapStateToProps)(RightBar);

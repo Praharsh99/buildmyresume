@@ -6,7 +6,7 @@ import ProfessionalExpSection from '../professional-exp-section/professional-exp
 
 import './professional-experience.style.css';
 
-const ProfessionalExp = () => {
+const ProfessionalExp = ({ className }) => {
   const [counter, setCounter] = useState(0);
   const [profExpSections, setProfExpSections] = useState([
     {
@@ -60,7 +60,7 @@ const ProfessionalExp = () => {
   };
 
   return (
-    <div className="professionalExperience">
+    <div className={`professionalExperience ${className}`}>
       <ContentInput
         placeholder="Professional Experience"
         content="Professional Experience"

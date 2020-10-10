@@ -6,7 +6,7 @@ import ProjectSection from '../projects-section/projects-section.component';
 
 import './projects.style.css';
 
-const Projects = () => {
+const Projects = ({ className }) => {
   const [counter, setCounter] = useState(0);
   const [projectSection, setProjectSection] = useState([
     {
@@ -60,7 +60,7 @@ const Projects = () => {
   };
 
   return (
-    <div className="projects">
+    <div className={`projects ${className}`}>
       <ContentInput
         placeholder="Projects"
         content="Personal Projects"

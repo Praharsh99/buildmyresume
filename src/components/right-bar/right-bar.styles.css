@@ -1,5 +1,6 @@
 .rightBar {
-  flex: 1;
+  max-width: 720px;
+  min-width: 720px;
   margin-left: 40px;
   margin-top: 40px;
 }

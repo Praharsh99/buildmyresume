@@ -5,6 +5,7 @@
   padding-left: 32px;
   border: 2px dashed transparent;
   transition: all 0.2s ease;
+  width: 100%;
 }
 
 .professionalExperience__timelineDot {

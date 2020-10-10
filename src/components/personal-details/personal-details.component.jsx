@@ -3,11 +3,14 @@ import { connect } from 'react-redux';
 
 import ContentInput from '../content-input/content-input.component';
 
-import { selectMainColor } from '../../redux/resume/resume.selectors';
+import {
+  selectMainColor,
+  selectSections,
+} from '../../redux/resume/resume.selectors';
 
 import './personal-details.styles.css';
 
-const PersonalDetails = ({ mainColor }) => {
+const PersonalDetails = ({ mainColor, sectionData }) => {
   const style1 = {
     textTransform: 'uppercase',
     fontSize: '18px',
@@ -35,7 +38,11 @@ const PersonalDetails = ({ mainColor }) => {
       />
 
       <div className="personalDetails__sub">
-        <div className="personalDetails__section">
+        <div
+          className={`personalDetails__section ${
+            !sectionData['birthdate'] && 'section--disabled'
+          }`}
+        >
           <ContentInput
             placeholder="Birth Date"
             content="Birth Date"
@@ -45,7 +52,11 @@ const PersonalDetails = ({ mainColor }) => {
           <ContentInput placeholder="Enter your birth date" style={style3} />
         </div>
 
-        <div className="personalDetails__section">
+        <div
+          className={`personalDetails__section ${
+            !sectionData['nationality'] && 'section--disabled'
+          }`}
+        >
           <ContentInput
             placeholder="Nationality"
             content="Nationality"
@@ -55,7 +66,11 @@ const PersonalDetails = ({ mainColor }) => {
           <ContentInput placeholder="Enter your nationality" style={style3} />
         </div>
 
-        <div className="personalDetails__section">
+        <div
+          className={`personalDetails__section ${
+            !sectionData['address'] && 'section--disabled'
+          }`}
+        >
           <ContentInput
             placeholder="Address"
             content="Address"
@@ -65,7 +80,11 @@ const PersonalDetails = ({ mainColor }) => {
           <ContentInput placeholder="Enter your address" style={style3} />
         </div>
 
-        <div className="personalDetails__section">
+        <div
+          className={`personalDetails__section ${
+            !sectionData['martialstatus'] && 'section--disabled'
+          }`}
+        >
           <ContentInput
             placeholder="Martial Status"
             content="Martial Status"
@@ -84,6 +103,7 @@ const PersonalDetails = ({ mainColor }) => {
 
 const mapStateToProps = (state) => ({
   mainColor: selectMainColor(state),
+  sectionData: selectSections(state),
 });
 
 export default connect(mapStateToProps)(PersonalDetails);

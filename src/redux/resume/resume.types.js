@@ -3,6 +3,7 @@ const ResumeActionTypes = {
   SET_MAIN_FONT: 'SET_MAIN_FONT',
   ADD_NEW_SKILL: 'ADD_NEW_SKILL',
   REMOVE_SKILL: 'REMOVE_SKILL',
+  TOGGLE_SECTION: 'TOGGLE_SECTION',
 };
 
 export default ResumeActionTypes;

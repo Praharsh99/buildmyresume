@@ -88,6 +88,21 @@
   cursor: pointer;
 }
 
+.toolBar__sections {
+  position: relative;
+}
+
+.toolBar__sectionDropdown {
+  position: absolute;
+  top: 120%;
+  left: 50%;
+  z-index: 99;
+  transform: translateX(-50%);
+  border-radius: 10px;
+  box-shadow: 0 2px 40px -1px rgba(0, 0, 0, 0.2);
+  animation: moveInFadeIn 0.3s linear;
+}
+
 .toolBar__title {
   font-size: 11px;
   letter-spacing: 1px;

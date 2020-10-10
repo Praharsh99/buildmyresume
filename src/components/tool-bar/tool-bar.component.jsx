@@ -7,6 +7,8 @@ import BackupIcon from '@material-ui/icons/Backup';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import GetAppIcon from '@material-ui/icons/GetApp';
 
+import SectionDropdown from '../sections-dropdown/sections-dropdown.component';
+
 import { selectMainColor } from '../../redux/resume/resume.selectors';
 import { setMainColor, setMainFont } from '../../redux/resume/resume.actions';
 
@@ -15,9 +17,14 @@ import './tool-bar.styles.css';
 const ToolBar = ({ mainColor, setNewMainColor, setNewMainFont }) => {
   const [font, setFont] = useState();
   const [colorDropdown, setColorDropdown] = useState(false);
+  const [sectionDropdown, setSectionDropdown] = useState(false);
 
   const toggleColorDropdown = () => {
     setColorDropdown(!colorDropdown);
+  };
+
+  const toggleSectionDropdown = () => {
+    setSectionDropdown(!sectionDropdown);
   };
 
   const handleNewColor = (e) => {
@@ -77,9 +84,15 @@ const ToolBar = ({ mainColor, setNewMainColor, setNewMainFont }) => {
         </div>
 
         <div className="toolBar__sections toolBar__similar">
-          <DashboardIcon />
+          <DashboardIcon onClick={toggleSectionDropdown} />
 
           <div className="toolBar__title">Sections</div>
+
+          {sectionDropdown && (
+            <div className="toolBar__sectionDropdown">
+              <SectionDropdown />
+            </div>
+          )}
         </div>
       </div>
 

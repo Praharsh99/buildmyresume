@@ -15,7 +15,7 @@ import Logos from '../../assets/logos';
 
 import './skills.style.css';
 
-const Skills = ({ addNewSkill, mainColor }) => {
+const Skills = ({ addNewSkill, mainColor, className }) => {
   const [toggleModal, setToggleModal] = useState(true);
 
   const handleLanguageModal = () => {
@@ -38,7 +38,7 @@ const Skills = ({ addNewSkill, mainColor }) => {
   };
 
   return (
-    <div className="skills">
+    <div className={`skills ${className}`}>
       <ContentInput
         placeholder="Technical Skills"
         style={style1}

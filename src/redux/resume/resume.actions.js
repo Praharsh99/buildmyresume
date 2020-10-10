@@ -19,3 +19,8 @@ export const removeSkill = (skillName) => ({
   type: ResumeActionTypes.REMOVE_SKILL,
   payload: skillName,
 });
+
+export const toggleSection = (sectionName) => ({
+  type: ResumeActionTypes.TOGGLE_SECTION,
+  payload: sectionName,
+});

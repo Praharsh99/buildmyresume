@@ -16,3 +16,8 @@ export const selectSkills = createSelector(
   [selectResume],
   (resume) => resume.skills
 );
+
+export const selectSections = createSelector(
+  [selectResume],
+  (resume) => resume.sections
+);

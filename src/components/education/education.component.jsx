@@ -6,7 +6,7 @@ import EducationSection from '../education-section/education-section.component';
 
 import './eductation.style.css';
 
-const Education = () => {
+const Education = ({ className }) => {
   const [counter, setCounter] = useState(0);
   const [educationSection, setEducationSection] = useState([
     {
@@ -62,7 +62,7 @@ const Education = () => {
   };
 
   return (
-    <div className="education">
+    <div className={`education ${className}`}>
       <ContentInput placeholder="Education" content="Education" style={style} />
 
       <div className="education__sub">

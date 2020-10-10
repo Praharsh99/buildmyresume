@@ -4,6 +4,7 @@
 
 .education__sub {
   position: relative;
+  width: 100%;
 }
 
 .education__sub::before {
