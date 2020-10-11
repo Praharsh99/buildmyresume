@@ -7,7 +7,7 @@ import './left-bar.styles.css';
 
 const LeftBar = () => {
   return (
-    <div className="leftBar">
+    <div className="leftBar" id="leftBar">
       <PersonalDetails />
 
       <Contact />

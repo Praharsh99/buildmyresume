@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import domtoimage from 'dom-to-image';
+import { jsPDF } from 'jspdf';
 
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import SaveIcon from '@material-ui/icons/Save';
@@ -9,12 +11,25 @@ import GetAppIcon from '@material-ui/icons/GetApp';
 
 import SectionDropdown from '../sections-dropdown/sections-dropdown.component';
 
-import { selectMainColor } from '../../redux/resume/resume.selectors';
-import { setMainColor, setMainFont } from '../../redux/resume/resume.actions';
+import {
+  selectMainColor,
+  selectProfilePicture,
+} from '../../redux/resume/resume.selectors';
+import {
+  setMainColor,
+  setMainFont,
+  setPreviewImageUrl,
+} from '../../redux/resume/resume.actions';
 
 import './tool-bar.styles.css';
 
-const ToolBar = ({ mainColor, setNewMainColor, setNewMainFont }) => {
+const ToolBar = ({
+  mainColor,
+  setNewMainColor,
+  setNewMainFont,
+  setPreviewImage,
+  profilePicture,
+}) => {
   const [font, setFont] = useState();
   const [colorDropdown, setColorDropdown] = useState(false);
   const [sectionDropdown, setSectionDropdown] = useState(false);
@@ -38,6 +53,27 @@ const ToolBar = ({ mainColor, setNewMainColor, setNewMainFont }) => {
   const handleNewFont = (e) => {
     setFont(e.target.value);
     setNewMainFont(e.target.value);
+  };
+
+  const handlePreviewClick = (e) => {
+    var node = document.getElementById('resume');
+
+    node.style.width = 'auto';
+
+    var options = {
+      cacheBust: true,
+      width: '1250',
+      height: '1684',
+    };
+
+    domtoimage
+      .toPng(node, options)
+      .then(function (dataUrl) {
+        setPreviewImage(dataUrl);
+      })
+      .catch(function (error) {
+        console.error('oops, something went wrong!', error);
+      });
   };
 
   return (
@@ -113,7 +149,10 @@ const ToolBar = ({ mainColor, setNewMainColor, setNewMainFont }) => {
 
       {/* 3rd part */}
       <div>
-        <div className="toolBar__preview toolBar__utils">
+        <div
+          className="toolBar__preview toolBar__utils"
+          onClick={handlePreviewClick}
+        >
           <VisibilityIcon />
           <span>Preview</span>
         </div>
@@ -132,11 +171,13 @@ const ToolBar = ({ mainColor, setNewMainColor, setNewMainFont }) => {
 
 const mapStateToProps = (state) => ({
   mainColor: selectMainColor(state),
+  profilePicture: selectProfilePicture(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
   setNewMainColor: (color) => dispatch(setMainColor(color)),
   setNewMainFont: (font) => dispatch(setMainFont(font)),
+  setPreviewImage: (dataUrl) => dispatch(setPreviewImageUrl(dataUrl)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ToolBar);

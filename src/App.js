@@ -5,29 +5,40 @@ import { useBeforeunload } from 'react-beforeunload';
 import Resume from './components/resume/resume.component';
 import ToolBar from './components/tool-bar/tool-bar.component';
 import Footer from './components/footer/footer.component';
+import Preview from './components/preview/preview.component';
 
-import { selectMainColor } from './redux/resume/resume.selectors';
+import {
+  selectMainColor,
+  selectPreviewImageUrl,
+} from './redux/resume/resume.selectors';
 
 import './App.css';
 
-function App({ mainColor }) {
+function App({ mainColor, previewImage }) {
   useEffect(() => {
     document.body.style.backgroundColor = mainColor;
   }, [mainColor]);
 
-  useBeforeunload((event) => event.preventDefault());
+  // useBeforeunload((event) => event.preventDefault());
 
   return (
     <div className="app">
       <ToolBar />
       <Resume />
       <Footer />
+
+      {previewImage && (
+        <div className="app__preview" style={{ background: mainColor }}>
+          <Preview />
+        </div>
+      )}
     </div>
   );
 }
 
 const mapStateToProps = (state) => ({
   mainColor: selectMainColor(state),
+  previewImage: selectPreviewImageUrl(state),
 });
 
 export default connect(mapStateToProps)(App);

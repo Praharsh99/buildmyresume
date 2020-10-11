@@ -16,7 +16,7 @@ import Logos from '../../assets/logos';
 import './skills.style.css';
 
 const Skills = ({ addNewSkill, mainColor, className }) => {
-  const [toggleModal, setToggleModal] = useState(true);
+  const [toggleModal, setToggleModal] = useState(false);
 
   const handleLanguageModal = () => {
     setToggleModal(!toggleModal);
@@ -53,7 +53,7 @@ const Skills = ({ addNewSkill, mainColor, className }) => {
         </IconButton>
       </div>
 
-      <div className={`${toggleModal ? 'modal__closed' : ''}`}>
+      {toggleModal && (
         <Modal handleClose={handleLanguageModal}>
           <h1>Choose your skills</h1>
 
@@ -74,7 +74,7 @@ const Skills = ({ addNewSkill, mainColor, className }) => {
             ))}
           </div>
         </Modal>
-      </div>
+      )}
     </div>
   );
 };

@@ -17,3 +17,15 @@
     #3083dc,
     #e1f015
   ); */
+
+.app__preview {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999999;
+}

@@ -1,16 +1,32 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+
+import { default as storage } from '../../firebase/firebase';
 
 import { Avatar } from '@material-ui/core';
 import CameraAltIcon from '@material-ui/icons/CameraAlt';
 
+import { selectProfilePicture } from '../../redux/resume/resume.selectors';
+import { setProfilePicture } from '../../redux/resume/resume.actions';
+
 import './profile-picture.styles.css';
 
-const ProfilePicture = ({ className }) => {
-  const [imageUrl, setImageURL] = useState(null);
+const ProfilePicture = ({ className, setProfilePicture, profilePicture }) => {
+  const [p, setP] = useState(null);
 
-  // const style = {
-  //   backgroundImage: `url(${imageUrl})`,
-  // };
+  useEffect(() => {
+    storage
+      .child('profile-pictures/sketch-short.jpeg')
+      .getDownloadURL()
+      .then(function (url) {
+        setP(url);
+        console.log('Hello', url);
+      })
+      .catch(function (error) {
+        // Handle any errors
+        console.log(error.message);
+      });
+  }, []);
 
   const handleClick = () => {
     const imageInput = document.createElement('input');
@@ -30,7 +46,7 @@ const ProfilePicture = ({ className }) => {
         const blob = new Blob([uploadedImage]);
         const imageUrl = URL.createObjectURL(blob);
 
-        setImageURL(imageUrl);
+        setProfilePicture(imageUrl);
       } else {
         alert('The selected file should an image and should not exceed 5MB');
       }
@@ -39,7 +55,7 @@ const ProfilePicture = ({ className }) => {
 
   return (
     <div className={`profilepicture ${className}`}>
-      <Avatar src={imageUrl} />
+      <Avatar src={profilePicture} />
 
       <div className="profilepicture__overlay" onClick={handleClick}>
         <CameraAltIcon />
@@ -49,7 +65,15 @@ const ProfilePicture = ({ className }) => {
   );
 };
 
-export default ProfilePicture;
+const mapStateToProps = (state) => ({
+  profilePicture: selectProfilePicture(state),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  setProfilePicture: (pic) => dispatch(setProfilePicture(pic)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfilePicture);
 
 // const fileInput = document.createElement('input');
 //   fileInput.type = 'file';

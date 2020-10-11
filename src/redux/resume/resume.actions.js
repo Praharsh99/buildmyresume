@@ -24,3 +24,13 @@ export const toggleSection = (sectionName) => ({
   type: ResumeActionTypes.TOGGLE_SECTION,
   payload: sectionName,
 });
+
+export const setPreviewImageUrl = (dataUrl) => ({
+  type: ResumeActionTypes.SET_PREVIEW_IMAGE_URL,
+  payload: dataUrl,
+});
+
+export const setProfilePicture = (picture) => ({
+  type: ResumeActionTypes.SET_PROFILE_PICTURE,
+  payload: picture,
+});

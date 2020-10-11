@@ -194,6 +194,7 @@
   align-items: center;
   padding: 14px;
   height: 100%;
+  cursor: pointer;
 }
 
 .toolBar__utils .MuiSvgIcon-root {

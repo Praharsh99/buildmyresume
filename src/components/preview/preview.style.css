@@ -1,0 +1,51 @@
+.preview {
+  background: transparent;
+  animation: fadeIn 0.3s linear;
+}
+
+.preview > img {
+  box-shadow: 0 5px 50px -2px rgba(0, 0, 0, 0.2);
+}
+
+.preview__goBack {
+  position: absolute;
+  top: 6%;
+  left: 2%;
+}
+
+.preview__goBack::before {
+  content: 'Go Back';
+  position: absolute;
+  top: -60%;
+  left: 2%;
+  background: #000;
+  color: #fff;
+  font-size: 12px;
+  text-transform: uppercase;
+  padding: 6px 5px;
+  width: 50px;
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.5);
+}
+
+.preview__goBack:hover::before {
+  opacity: 1;
+}
+
+.preview__goBack .MuiSvgIcon-root {
+  filter: hue-rotate(180deg) brightness(130%);
+  font-size: 50px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  backface-visibility: hidden;
+}
+
+.preview__goBack .MuiSvgIcon-root:hover {
+  transform: translateY(-3px);
+}
+
+.preview__goBack .MuiSvgIcon-root:active {
+  transform: translateY(0px);
+}

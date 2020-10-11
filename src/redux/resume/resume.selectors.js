@@ -21,3 +21,13 @@ export const selectSections = createSelector(
   [selectResume],
   (resume) => resume.sections
 );
+
+export const selectPreviewImageUrl = createSelector(
+  [selectResume],
+  (resume) => resume.previewImageUrl
+);
+
+export const selectProfilePicture = createSelector(
+  [selectResume],
+  (resume) => resume.profilePicture
+);

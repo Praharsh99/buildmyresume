@@ -30,6 +30,9 @@ const INITIAL_STATE = {
     education: true,
     skills: false,
   },
+  previewImageUrl: null,
+  profilePicture:
+    'https://firebasestorage.googleapis.com/v0/b/buildmyresume-3e83c.appspot.com/o/profile-pictures%2Fsketch-short.jpeg?alt=media&token=15703f75-2ac3-4901-9049-e825857c879e',
 };
 
 const resumeReducer = (state = INITIAL_STATE, action) => {
@@ -62,6 +65,18 @@ const resumeReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         sections: changeSectionState(state.sections, action.payload),
+      };
+
+    case ResumeActionTypes.SET_PREVIEW_IMAGE_URL:
+      return {
+        ...state,
+        previewImageUrl: action.payload,
+      };
+
+    case ResumeActionTypes.SET_PROFILE_PICTURE:
+      return {
+        ...state,
+        profilePicture: action.payload,
       };
 
     default:

@@ -9,7 +9,7 @@ const Resume = () => {
   const resumeRef = useRef(null);
 
   return (
-    <div className="resume" ref={resumeRef}>
+    <div className="resume" ref={resumeRef} id="resume">
       <Header />
       <Body />
     </div>
