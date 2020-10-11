@@ -10,13 +10,14 @@ const ContentInput = ({
   content,
   placeholderBold,
   placeholderSemiBold,
+  className,
   ...otherProps
 }) => {
   return (
     <div
       className={`contentInput ${placeholderBold && 'placeholderBold'} ${
         placeholderSemiBold && 'placeholderSemiBold'
-      }`}
+      } ${className}`}
     >
       <p
         placeholder="Placeholder Here..."

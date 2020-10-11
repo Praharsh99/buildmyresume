@@ -5,7 +5,7 @@ import CameraAltIcon from '@material-ui/icons/CameraAlt';
 
 import './profile-picture.styles.css';
 
-const ProfilePicture = ({ profilePictureURL }) => {
+const ProfilePicture = ({ className }) => {
   const [imageUrl, setImageURL] = useState(null);
 
   // const style = {
@@ -38,7 +38,7 @@ const ProfilePicture = ({ profilePictureURL }) => {
   };
 
   return (
-    <div className="profilepicture">
+    <div className={`profilepicture ${className}`}>
       <Avatar src={imageUrl} />
 
       <div className="profilepicture__overlay" onClick={handleClick}>

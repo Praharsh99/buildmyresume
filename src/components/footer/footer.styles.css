@@ -1,0 +1,93 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+  padding: 25px 0 10px 0;
+}
+
+.footer a {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+}
+
+.footer > div {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+  font-family: Poppins, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+  padding: 0 20px;
+  min-height: 30px;
+}
+
+.footer > div:not(:last-of-type):hover {
+  color: #fff;
+}
+
+.footer > div:not(:last-of-type) {
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.footer > div .MuiAvatar-root {
+  width: 30px;
+  height: 30px;
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+  margin-right: 15px;
+}
+
+.footer > div > a > img {
+  margin-right: 10px;
+}
+
+.footer__socialLinks {
+  margin-left: 10px;
+}
+
+.footer__socialLinks > .MuiSvgIcon-root {
+  font-size: 22px;
+  margin: 0 5px;
+  transition: color 0.2s ease;
+}
+
+.footer__socialLinks > .MuiSvgIcon-root:hover {
+  color: #fff;
+}
+
+.modal__privacyNote {
+  color: #000;
+  font-size: 14px;
+  font-family: Poppins, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal__privacyNote > h1 {
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.modal__privacyNote > div {
+  text-align: justify;
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+}
+
+.modal__privacyNote span {
+  color: grey;
+  font-size: 14px;
+  margin: 14px;
+}
