@@ -1,24 +1,26 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import domtoimage from 'dom-to-image';
-import { jsPDF } from 'jspdf';
 
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import SaveIcon from '@material-ui/icons/Save';
 import BackupIcon from '@material-ui/icons/Backup';
-import VisibilityIcon from '@material-ui/icons/Visibility';
 import GetAppIcon from '@material-ui/icons/GetApp';
 
 import SectionDropdown from '../sections-dropdown/sections-dropdown.component';
+import ColorDropdown from '../color-dropdown/color-dropdown.component';
+import FontDropdown from '../font-dropdown/font-dropdown.component';
 
 import {
   selectMainColor,
   selectProfilePicture,
 } from '../../redux/resume/resume.selectors';
+
 import {
   setMainColor,
   setMainFont,
   setPreviewImageUrl,
+  toggleLoader,
 } from '../../redux/resume/resume.actions';
 
 import './tool-bar.styles.css';
@@ -28,7 +30,7 @@ const ToolBar = ({
   setNewMainColor,
   setNewMainFont,
   setPreviewImage,
-  profilePicture,
+  toggleLoaderComponent,
 }) => {
   const [font, setFont] = useState();
   const [colorDropdown, setColorDropdown] = useState(false);
@@ -56,8 +58,10 @@ const ToolBar = ({
   };
 
   const handlePreviewClick = (e) => {
-    var node = document.getElementById('resume');
+    toggleLoaderComponent();
+    document.body.style.overflow = 'hidden';
 
+    var node = document.getElementById('resume');
     node.style.width = 'auto';
 
     var options = {
@@ -70,6 +74,8 @@ const ToolBar = ({
       .toPng(node, options)
       .then(function (dataUrl) {
         setPreviewImage(dataUrl);
+
+        node.removeAttribute('style');
       })
       .catch(function (error) {
         console.error('oops, something went wrong!', error);
@@ -80,35 +86,22 @@ const ToolBar = ({
     <div className="toolBar">
       {/* 1st part */}
       <div className="toolBar__editing">
-        <div className="toolBar__color">
-          <span
-            style={{ backgroundColor: mainColor }}
-            onClick={toggleColorDropdown}
-          ></span>
+        {/* Color Selection */}
+        <div className="toolBar__color" onClick={toggleColorDropdown}>
+          <span style={{ backgroundColor: mainColor }}></span>
           <span className="toolBar__title">Color</span>
 
-          {colorDropdown && (
-            <div className="toolBar__colorDropdown" onClick={handleNewColor}>
-              <span id="#3083dc"></span>
-              <span id="#4fb298"></span>
-              <span id="#e76650"></span>
-              <span id="#bb3d76"></span>
-            </div>
-          )}
+          {colorDropdown && <ColorDropdown handleNewColor={handleNewColor} />}
         </div>
 
+        {/* Fonts Selection */}
         <div className="toolBar__typography">
-          <select value={font} onChange={handleNewFont}>
-            <option value="Poppins">Poppins</option>
-            <option value="Raleway">Raleway</option>
-            <option value="Barlow">Barlow</option>
-            <option value="Lato">Lato</option>
-            <option value="Nunito">Nunito</option>
-          </select>
+          <FontDropdown font={font} handleNewFont={handleNewFont} />
 
           <span className="toolBar__title">Typography</span>
         </div>
 
+        {/* Font Size Selection */}
         <div className="toolBar__textSize">
           <div>
             <span>A</span>
@@ -119,8 +112,12 @@ const ToolBar = ({
           <div className="toolBar__title">Text Size</div>
         </div>
 
-        <div className="toolBar__sections toolBar__similar">
-          <DashboardIcon onClick={toggleSectionDropdown} />
+        {/* Sections Dropdown */}
+        <div
+          className="toolBar__sections toolBar__similar"
+          onClick={toggleSectionDropdown}
+        >
+          <DashboardIcon />
 
           <div className="toolBar__title">Sections</div>
 
@@ -134,12 +131,14 @@ const ToolBar = ({
 
       {/* 2nd part */}
       <div>
+        {/* Save Section */}
         <div className="toolBar__save toolBar__similar">
           <SaveIcon />
 
           <div className="toolBar__title">Save</div>
         </div>
 
+        {/* Load Section */}
         <div className="toolBar__load toolBar__similar">
           <BackupIcon />
 
@@ -150,16 +149,9 @@ const ToolBar = ({
       {/* 3rd part */}
       <div>
         <div
-          className="toolBar__preview toolBar__utils"
-          onClick={handlePreviewClick}
-        >
-          <VisibilityIcon />
-          <span>Preview</span>
-        </div>
-
-        <div
           className="toolBar__download toolBar__utils"
           style={{ background: mainColor }}
+          onClick={handlePreviewClick}
         >
           <GetAppIcon />
           <span>Download PDF</span>
@@ -178,6 +170,7 @@ const mapDispatchToProps = (dispatch) => ({
   setNewMainColor: (color) => dispatch(setMainColor(color)),
   setNewMainFont: (font) => dispatch(setMainFont(font)),
   setPreviewImage: (dataUrl) => dispatch(setPreviewImageUrl(dataUrl)),
+  toggleLoaderComponent: () => dispatch(toggleLoader()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ToolBar);

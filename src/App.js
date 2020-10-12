@@ -6,15 +6,17 @@ import Resume from './components/resume/resume.component';
 import ToolBar from './components/tool-bar/tool-bar.component';
 import Footer from './components/footer/footer.component';
 import Preview from './components/preview/preview.component';
+import Loader from './components/loader/loader.component';
 
 import {
   selectMainColor,
   selectPreviewImageUrl,
+  selectLoader,
 } from './redux/resume/resume.selectors';
 
 import './App.css';
 
-function App({ mainColor, previewImage }) {
+function App({ mainColor, previewImage, loader }) {
   useEffect(() => {
     document.body.style.backgroundColor = mainColor;
   }, [mainColor]);
@@ -28,8 +30,20 @@ function App({ mainColor, previewImage }) {
       <Footer />
 
       {previewImage && (
-        <div className="app__preview" style={{ background: mainColor }}>
+        <div
+          className="app__onTop app__preview"
+          style={{ background: mainColor }}
+        >
           <Preview />
+        </div>
+      )}
+
+      {loader && (
+        <div
+          className="app__onTop app__loader"
+          style={{ background: mainColor }}
+        >
+          <Loader />
         </div>
       )}
     </div>
@@ -39,6 +53,7 @@ function App({ mainColor, previewImage }) {
 const mapStateToProps = (state) => ({
   mainColor: selectMainColor(state),
   previewImage: selectPreviewImageUrl(state),
+  loader: selectLoader(state),
 });
 
 export default connect(mapStateToProps)(App);

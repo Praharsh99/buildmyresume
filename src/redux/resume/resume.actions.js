@@ -34,3 +34,7 @@ export const setProfilePicture = (picture) => ({
   type: ResumeActionTypes.SET_PROFILE_PICTURE,
   payload: picture,
 });
+
+export const toggleLoader = () => ({
+  type: ResumeActionTypes.TOGGLE_LOADER,
+});

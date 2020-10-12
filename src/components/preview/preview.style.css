@@ -1,23 +1,38 @@
 .preview {
   background: transparent;
+  display: flex;
+  flex-direction: column;
+}
+
+.preview__animate {
   animation: fadeIn 0.3s linear;
 }
 
 .preview > img {
   box-shadow: 0 5px 50px -2px rgba(0, 0, 0, 0.2);
+  margin-top: -100px;
 }
 
 .preview__goBack {
-  position: absolute;
-  top: 6%;
-  left: 2%;
+  cursor: pointer;
+  position: sticky;
+  top: 10%;
+  left: -40%;
+  height: 40px;
+  width: 40px;
+  margin-left: -7.5%;
+  background: #fff;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 2px 25px -1px rgba(0, 0, 0, 0.5);
 }
 
 .preview__goBack::before {
   content: 'Go Back';
   position: absolute;
-  top: -60%;
-  left: 2%;
+  top: -90%;
+  left: -22%;
   background: #000;
   color: #fff;
   font-size: 12px;
@@ -34,18 +49,62 @@
   opacity: 1;
 }
 
+.preview__goBack:hover {
+  background: #000;
+}
+
 .preview__goBack .MuiSvgIcon-root {
-  filter: hue-rotate(180deg) brightness(130%);
-  font-size: 50px;
+  transition: color 0.2s ease;
+  color: #000;
+}
+
+.preview__goBack:hover .MuiSvgIcon-root {
+  color: #fff;
+}
+
+.preview__downloadBtn {
   cursor: pointer;
-  transition: transform 0.2s ease;
-  backface-visibility: hidden;
+  position: sticky;
+  top: 22%;
+  right: 15%;
+  display: grid;
+  place-items: center;
+  filter: hue-rotate(180deg) brightness(130%);
+  margin-left: auto;
+  margin-bottom: 15px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
 }
 
-.preview__goBack .MuiSvgIcon-root:hover {
-  transform: translateY(-3px);
+.preview__downloadBtn::before {
+  content: 'Download';
+  position: absolute;
+  top: -52%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #000;
+  color: #fff;
+  font-size: 12px;
+  text-transform: uppercase;
+  padding: 6px 5px;
+  width: 68px;
+  border-radius: 4px;
+  opacity: 0;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 10px -1px rgba(0, 0, 0, 0.4);
 }
 
-.preview__goBack .MuiSvgIcon-root:active {
-  transform: translateY(0px);
+.preview__downloadBtn:hover {
+  box-shadow: 0 2px 20px -1px rgba(0, 0, 0, 0.4);
+}
+
+.preview__downloadBtn:hover::before {
+  opacity: 1;
+}
+
+.preview__downloadBtn > .MuiSvgIcon-root {
+  font-size: 70px;
+  border-radius: 50%;
+  padding: 15px;
 }

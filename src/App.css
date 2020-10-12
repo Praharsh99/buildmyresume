@@ -18,7 +18,7 @@
     #e1f015
   ); */
 
-.app__preview {
+.app__onTop {
   position: fixed;
   top: 0;
   left: 0;
@@ -27,5 +27,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.app__preview {
   z-index: 99999999;
+}
+
+.app__loader {
+  width: 100vw;
+  height: 100vh;
+  z-index: 999999999;
 }

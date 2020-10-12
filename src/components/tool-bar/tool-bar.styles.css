@@ -28,64 +28,20 @@
   flex-direction: column;
   align-items: center;
   padding: 12px;
-  border-right: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.toolBar__colorDropdown {
-  position: absolute;
-  padding: 12px 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #fff;
-  top: 120%;
-  left: 50%;
-  z-index: 99;
-  transform: translateX(-50%);
-  border-radius: 10px;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
-  animation: moveInFadeIn 0.3s linear;
-}
-
-.toolBar__colorDropdown::before {
-  content: '';
-  position: absolute;
-  background: #fff;
-  top: -5px;
-  left: 50%;
-  transform: translateX(-50%) rotate(45deg);
-  height: 20px;
-  width: 20px;
-}
-
-.toolBar__colorDropdown > span {
-  border-radius: 50%;
-  padding: 20px;
-  margin: 10px 0;
   cursor: pointer;
-}
-
-.toolBar__colorDropdown > span:nth-child(1) {
-  background-color: #3083dc;
-}
-
-.toolBar__colorDropdown > span:nth-child(2) {
-  background-color: #4fb298;
-}
-
-.toolBar__colorDropdown > span:nth-child(3) {
-  background-color: #e76650;
-}
-
-.toolBar__colorDropdown > span:nth-child(4) {
-  background-color: #bb3d76;
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .toolBar__color > span:first-child {
   border-radius: 50%;
-  background: #bb3d76;
   padding: 20px;
   cursor: pointer;
+  border: 3px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.toolBar__color > span:first-child:hover {
+  border-color: #fff;
 }
 
 .toolBar__sections {
@@ -181,7 +137,7 @@
   transition: color 0.2s ease;
 }
 
-.toolBar__similar .MuiSvgIcon-root:hover {
+.toolBar__similar:hover .MuiSvgIcon-root {
   color: #fff;
 }
 
@@ -212,6 +168,7 @@
   font-size: 14px;
   letter-spacing: 1px;
   text-transform: uppercase;
+  font-family: Poppins, sans-serif;
   font-weight: 600;
   margin-left: 10px;
 }
@@ -219,16 +176,16 @@
 .toolBar__download {
   filter: hue-rotate(180deg) brightness(130%);
   color: #000;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-radius: 10px;
   cursor: pointer;
+  padding: 20px 30px;
 }
 
 .toolBar__download .MuiSvgIcon-root {
   color: rgba(0, 0, 0, 0.6);
 }
 
-.toolBar__download .MuiSvgIcon-root:hover {
+.toolBar__download:hover .MuiSvgIcon-root {
   color: #000;
 }
 

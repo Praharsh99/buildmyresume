@@ -31,3 +31,8 @@ export const selectProfilePicture = createSelector(
   [selectResume],
   (resume) => resume.profilePicture
 );
+
+export const selectLoader = createSelector(
+  [selectResume],
+  (resume) => resume.loader
+);

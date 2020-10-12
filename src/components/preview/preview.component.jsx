@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import domtoimage from 'dom-to-image';
 import { jsPDF } from 'jspdf';
+
+import GetAppIcon from '@material-ui/icons/GetApp';
 
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
@@ -9,13 +10,37 @@ import {
   selectMainColor,
   selectPreviewImageUrl,
 } from '../../redux/resume/resume.selectors';
-import { setPreviewImageUrl } from '../../redux/resume/resume.actions';
+
+import {
+  setPreviewImageUrl,
+  toggleLoader,
+} from '../../redux/resume/resume.actions';
 
 import './preview.style.css';
 
-const Preview = ({ mainColor, previewImage, setPreviewImage }) => {
+const Preview = ({
+  mainColor,
+  previewImage,
+  setPreviewImage,
+  toggleLoaderComponent,
+}) => {
+  useEffect(() => {
+    setTimeout(() => {
+      // Removing loader
+      toggleLoaderComponent();
+
+      // Scrolling to top
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+
+      // Other stuff
+      document.body.style.overflow = '';
+      document.getElementById('preview').classList.add('preview__animate');
+    }, 3000);
+  });
+
   const style = {
-    color: mainColor,
+    backgroundColor: mainColor,
   };
 
   const handleClick = () => {
@@ -28,39 +53,22 @@ const Preview = ({ mainColor, previewImage, setPreviewImage }) => {
   const handleDownload = () => {
     var node = document.getElementById('resume-preview');
 
-    var options = {
-      cacheBust: true,
-      width: 1190,
-      height: 1684,
-      quality: 1,
-    };
-
-    domtoimage
-      .toPng(node, options)
-      .then(function (dataUrl) {
-        var doc = new jsPDF();
-        var img = new Image();
-        img.src = dataUrl;
-
-        img.onload = function () {
-          doc.addImage(img, 'PNG', 0, 0, 210, 305);
-          doc.save('buildmyresume.pdf');
-        };
-      })
-      .catch(function (error) {
-        console.error('oops, something went wrong!', error);
-      });
+    var doc = new jsPDF();
+    doc.addImage(node, 'PNG', 0, 0, 210, 305);
+    doc.save('buildmyresume.pdf');
   };
 
   return (
-    <div className="preview">
-      <img id="resume-preview" src={previewImage} alt="Preview" />
-
-      <div className="preview__goBack" onClick={handleClick}>
-        <ArrowBackIcon style={style} />
+    <div className="preview" id="preview">
+      <div className="preview__downloadBtn" onClick={handleDownload}>
+        <GetAppIcon style={style} />
       </div>
 
-      <button onClick={handleDownload}>Download</button>
+      <div className="preview__goBack" onClick={handleClick}>
+        <ArrowBackIcon />
+      </div>
+
+      <img id="resume-preview" src={previewImage} alt="Preview" />
     </div>
   );
 };
@@ -72,6 +80,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   setPreviewImage: (imageUrl) => dispatch(setPreviewImageUrl(imageUrl)),
+  toggleLoaderComponent: () => dispatch(toggleLoader()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Preview);

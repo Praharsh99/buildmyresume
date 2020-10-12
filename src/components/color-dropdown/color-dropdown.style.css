@@ -1,0 +1,49 @@
+.toolBar__colorDropdown {
+  position: absolute;
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  top: 120%;
+  left: 50%;
+  z-index: 99;
+  transform: translateX(-50%);
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+  animation: moveInFadeIn 0.3s linear;
+}
+
+.toolBar__colorDropdown::before {
+  content: '';
+  position: absolute;
+  background: #fff;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  height: 20px;
+  width: 20px;
+}
+
+.toolBar__colorDropdown > span {
+  border-radius: 50%;
+  padding: 20px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.toolBar__colorDropdown > span:nth-child(1) {
+  background-color: #3083dc;
+}
+
+.toolBar__colorDropdown > span:nth-child(2) {
+  background-color: #4fb298;
+}
+
+.toolBar__colorDropdown > span:nth-child(3) {
+  background-color: #e76650;
+}
+
+.toolBar__colorDropdown > span:nth-child(4) {
+  background-color: #bb3d76;
+}

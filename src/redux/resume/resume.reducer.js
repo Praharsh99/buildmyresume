@@ -11,6 +11,7 @@ const INITIAL_STATE = {
   color: `${colorsArray[Math.floor(Math.random() * colorsArray.length)]}`,
   font: 'Poppins',
   skills: [],
+  loader: false,
   sections: {
     picture: true,
     profile: false,
@@ -77,6 +78,12 @@ const resumeReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         profilePicture: action.payload,
+      };
+
+    case ResumeActionTypes.TOGGLE_LOADER:
+      return {
+        ...state,
+        loader: !state.loader,
       };
 
     default:
