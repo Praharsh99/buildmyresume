@@ -36,3 +36,8 @@ export const selectLoader = createSelector(
   [selectResume],
   (resume) => resume.loader
 );
+
+export const selectOverflowAlert = createSelector(
+  [selectResume],
+  (resume) => resume.overflowAlert
+);

@@ -14,6 +14,7 @@ import FontDropdown from '../font-dropdown/font-dropdown.component';
 import {
   selectMainColor,
   selectProfilePicture,
+  selectOverflowAlert,
 } from '../../redux/resume/resume.selectors';
 
 import {
@@ -31,6 +32,7 @@ const ToolBar = ({
   setNewMainFont,
   setPreviewImage,
   toggleLoaderComponent,
+  overflowAlert,
 }) => {
   const [font, setFont] = useState();
   const [colorDropdown, setColorDropdown] = useState(false);
@@ -58,28 +60,39 @@ const ToolBar = ({
   };
 
   const handlePreviewClick = (e) => {
-    toggleLoaderComponent();
-    document.body.style.overflow = 'hidden';
+    if (!overflowAlert) {
+      // Scrolling to top
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
 
-    var node = document.getElementById('resume');
-    node.style.width = 'auto';
+      toggleLoaderComponent();
 
-    var options = {
-      cacheBust: true,
-      width: '1250',
-      height: '1684',
-    };
+      document.body.style.overflow = 'hidden';
 
-    domtoimage
-      .toPng(node, options)
-      .then(function (dataUrl) {
-        setPreviewImage(dataUrl);
+      var node = document.getElementById('resume');
+      node.style.width = 'auto';
 
-        node.removeAttribute('style');
-      })
-      .catch(function (error) {
-        console.error('oops, something went wrong!', error);
-      });
+      var options = {
+        cacheBust: true,
+        width: '1190',
+        height: '1684',
+      };
+
+      domtoimage
+        .toPng(node, options)
+        .then(function (dataUrl) {
+          setPreviewImage(dataUrl);
+
+          node.removeAttribute('style');
+        })
+        .catch(function (error) {
+          console.error('oops, something went wrong!', error);
+        });
+    } else {
+      alert(
+        'Maximum height of the resumè crossed, please remove some sections and try downloading!'
+      );
+    }
   };
 
   return (
@@ -87,8 +100,11 @@ const ToolBar = ({
       {/* 1st part */}
       <div className="toolBar__editing">
         {/* Color Selection */}
-        <div className="toolBar__color" onClick={toggleColorDropdown}>
-          <span style={{ backgroundColor: mainColor }}></span>
+        <div className="toolBar__color">
+          <span
+            style={{ backgroundColor: mainColor }}
+            onClick={toggleColorDropdown}
+          ></span>
           <span className="toolBar__title">Color</span>
 
           {colorDropdown && <ColorDropdown handleNewColor={handleNewColor} />}
@@ -113,11 +129,8 @@ const ToolBar = ({
         </div>
 
         {/* Sections Dropdown */}
-        <div
-          className="toolBar__sections toolBar__similar"
-          onClick={toggleSectionDropdown}
-        >
-          <DashboardIcon />
+        <div className="toolBar__sections toolBar__similar">
+          <DashboardIcon onClick={toggleSectionDropdown} />
 
           <div className="toolBar__title">Sections</div>
 
@@ -164,6 +177,7 @@ const ToolBar = ({
 const mapStateToProps = (state) => ({
   mainColor: selectMainColor(state),
   profilePicture: selectProfilePicture(state),
+  overflowAlert: selectOverflowAlert(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

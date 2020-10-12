@@ -12,7 +12,7 @@ import './right-bar.styles.css';
 
 const RightBar = ({ sectionData }) => {
   return (
-    <div className="rightBar">
+    <div className="rightBar" id="rightBar">
       <ProfessionalExp
         className={!sectionData['professional'] && 'section--disabled'}
       />

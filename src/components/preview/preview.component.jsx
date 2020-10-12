@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { jsPDF } from 'jspdf';
+import domtoimage from 'dom-to-image';
 
 import GetAppIcon from '@material-ui/icons/GetApp';
 
@@ -29,10 +30,6 @@ const Preview = ({
       // Removing loader
       toggleLoaderComponent();
 
-      // Scrolling to top
-      document.body.scrollTop = 0;
-      document.documentElement.scrollTop = 0;
-
       // Other stuff
       document.body.style.overflow = '';
       document.getElementById('preview').classList.add('preview__animate');
@@ -51,11 +48,39 @@ const Preview = ({
   };
 
   const handleDownload = () => {
-    var node = document.getElementById('resume-preview');
+    document.getElementById('rightBar').style.marginLeft = '-100px';
+    document.getElementById('language-add').style.display = 'none';
+    var node = document.getElementById('resume');
 
-    var doc = new jsPDF();
-    doc.addImage(node, 'PNG', 0, 0, 210, 305);
-    doc.save('buildmyresume.pdf');
+    node.style.width = 'auto';
+    node.style.height = 'auto';
+    node.style.padding = '50px 60px';
+    node.style.paddingRight = '30px';
+
+    var options = {
+      cacheBust: true,
+      width: '1190',
+      height: '1684',
+    };
+
+    domtoimage
+      .toPng(node, options)
+      .then(function (dataUrl) {
+        node.removeAttribute('style');
+
+        var doc = new jsPDF();
+        var img = new Image();
+        img.src = dataUrl;
+        doc.addImage(img, 'PNG', 0, 0, 230, 330);
+        doc.save('buildmyresume.pdf');
+
+        node.removeAttribute('style');
+        document.getElementById('rightBar').removeAttribute('style');
+        document.getElementById('language-add').removeAttribute('style');
+      })
+      .catch(function (error) {
+        console.error('oops, something went wrong!', error);
+      });
   };
 
   return (

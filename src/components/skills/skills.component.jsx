@@ -48,7 +48,7 @@ const Skills = ({ addNewSkill, mainColor, className }) => {
       <div className="skills__sub">
         <SkillsSection />
 
-        <IconButton onClick={handleLanguageModal}>
+        <IconButton onClick={handleLanguageModal} id="language-add">
           <AddBoxIcon style={style2} />
         </IconButton>
       </div>

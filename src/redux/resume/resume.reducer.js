@@ -33,6 +33,7 @@ const INITIAL_STATE = {
   },
   previewImageUrl: null,
   profilePicture: null,
+  overflowAlert: false,
 };
 
 const resumeReducer = (state = INITIAL_STATE, action) => {
@@ -83,6 +84,12 @@ const resumeReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         loader: !state.loader,
+      };
+
+    case ResumeActionTypes.SET_OVERFLOW_ALERT:
+      return {
+        ...state,
+        overflowAlert: !state.overflowAlert,
       };
 
     default:

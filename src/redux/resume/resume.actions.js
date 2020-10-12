@@ -38,3 +38,7 @@ export const setProfilePicture = (picture) => ({
 export const toggleLoader = () => ({
   type: ResumeActionTypes.TOGGLE_LOADER,
 });
+
+export const setOverflowAlert = () => ({
+  type: ResumeActionTypes.SET_OVERFLOW_ALERT,
+});

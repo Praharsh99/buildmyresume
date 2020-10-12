@@ -21,7 +21,7 @@ function App({ mainColor, previewImage, loader }) {
     document.body.style.backgroundColor = mainColor;
   }, [mainColor]);
 
-  // useBeforeunload((event) => event.preventDefault());
+  useBeforeunload((event) => event.preventDefault());
 
   return (
     <div className="app">

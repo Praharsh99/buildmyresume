@@ -9,11 +9,11 @@
 .professionalExperience__sub::before {
   content: '';
   position: absolute;
-  height: 75%;
+  height: 90%;
   width: 2px;
   background: #000;
   opacity: 0.2;
-  top: 30px;
+  top: 10px;
   left: 15.5px;
   z-index: 1;
 }
