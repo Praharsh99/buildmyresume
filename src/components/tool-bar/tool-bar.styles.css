@@ -9,7 +9,7 @@
   align-items: center;
   background: transparent;
   color: #fff;
-  animation: moveDown 0.3s ease;
+  animation: moveDown 1s ease;
 }
 
 .toolBar > div {

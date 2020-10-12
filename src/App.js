@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { useBeforeunload } from 'react-beforeunload';
 
@@ -7,6 +7,7 @@ import ToolBar from './components/tool-bar/tool-bar.component';
 import Footer from './components/footer/footer.component';
 import Preview from './components/preview/preview.component';
 import Loader from './components/loader/loader.component';
+import HomePage from './components/homepage/homepage.component';
 
 import {
   selectMainColor,
@@ -14,20 +15,39 @@ import {
   selectLoader,
 } from './redux/resume/resume.selectors';
 
+import { toggleLoader } from './redux/resume/resume.actions';
+
 import './App.css';
 
-function App({ mainColor, previewImage, loader }) {
+function App({ mainColor, previewImage, loader, toggleLoader }) {
+  const [loadContent, setLoadContent] = useState(false);
+
   useEffect(() => {
     document.body.style.backgroundColor = mainColor;
   }, [mainColor]);
 
   useBeforeunload((event) => event.preventDefault());
 
+  const handleClick = () => {
+    toggleLoader();
+
+    setTimeout(() => {
+      toggleLoader();
+      setLoadContent(true);
+    }, 3000);
+  };
+
   return (
     <div className="app">
-      <ToolBar />
-      <Resume />
-      <Footer />
+      {loadContent ? (
+        <>
+          <ToolBar />
+          <Resume />
+          <Footer />
+        </>
+      ) : (
+        <HomePage handleClick={handleClick} />
+      )}
 
       {previewImage && (
         <div
@@ -56,4 +76,8 @@ const mapStateToProps = (state) => ({
   loader: selectLoader(state),
 });
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = (dispatch) => ({
+  toggleLoader: () => dispatch(toggleLoader()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
