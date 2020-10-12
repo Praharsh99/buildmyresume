@@ -32,8 +32,7 @@ const INITIAL_STATE = {
     skills: false,
   },
   previewImageUrl: null,
-  profilePicture:
-    'https://firebasestorage.googleapis.com/v0/b/buildmyresume-3e83c.appspot.com/o/profile-pictures%2Fsketch-short.jpeg?alt=media&token=15703f75-2ac3-4901-9049-e825857c879e',
+  profilePicture: null,
 };
 
 const resumeReducer = (state = INITIAL_STATE, action) => {

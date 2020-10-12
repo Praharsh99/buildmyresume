@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
-import { default as storage } from '../../firebase/firebase';
+import { uploadProfilePicture } from '../../firebase/firebase';
 
 import { Avatar } from '@material-ui/core';
 import CameraAltIcon from '@material-ui/icons/CameraAlt';
@@ -12,22 +12,6 @@ import { setProfilePicture } from '../../redux/resume/resume.actions';
 import './profile-picture.styles.css';
 
 const ProfilePicture = ({ className, setProfilePicture, profilePicture }) => {
-  const [p, setP] = useState(null);
-
-  useEffect(() => {
-    storage
-      .child('profile-pictures/sketch-short.jpeg')
-      .getDownloadURL()
-      .then(function (url) {
-        setP(url);
-        console.log('Hello', url);
-      })
-      .catch(function (error) {
-        // Handle any errors
-        console.log(error.message);
-      });
-  }, []);
-
   const handleClick = () => {
     const imageInput = document.createElement('input');
     imageInput.type = 'file';
@@ -36,17 +20,31 @@ const ProfilePicture = ({ className, setProfilePicture, profilePicture }) => {
 
     imageInput.click();
 
-    imageInput.onchange = () => {
+    imageInput.onchange = async () => {
       const uploadedImage = imageInput.files[0];
 
       if (
         uploadedImage.type.includes('image/') &&
         uploadedImage.size <= 5242880
       ) {
-        const blob = new Blob([uploadedImage]);
-        const imageUrl = URL.createObjectURL(blob);
+        // Uploading the image to firebase and getting the URL
+        setProfilePicture(
+          'https://media2.giphy.com/media/xTkcEQACH24SMPxIQg/giphy.gif?cid=ecf05e47uybihft8mqznnchgm1bweda6z7na9yih8u897wjq&rid=giphy.gif'
+        );
 
-        setProfilePicture(imageUrl);
+        try {
+          const newProfilePictureUrl = await uploadProfilePicture(
+            uploadedImage,
+            uploadedImage.type
+          );
+
+          setProfilePicture(newProfilePictureUrl);
+        } catch (err) {
+          setProfilePicture(null);
+          alert(
+            'Something went wrong while uploading profile picture! Try Again'
+          );
+        }
       } else {
         alert('The selected file should an image and should not exceed 5MB');
       }
@@ -74,17 +72,3 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfilePicture);
-
-// const fileInput = document.createElement('input');
-//   fileInput.type = 'file';
-//   fileInput.multiple = false;
-//   fileInput.accept = 'image/*';
-
-//   fileInput.click();
-
-//   fileInput.onchange = () => {
-//     const uploadedImage = fileInput.files[0];
-
-//     if (validImageTypes.includes(uploadedImage.type)) {
-//       const blob = new Blob([fileInput.files[0]]);
-//       const imageUrl = URL.createObjectURL(blob);
