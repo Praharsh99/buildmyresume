@@ -55,9 +55,9 @@ const Preview = ({
     node.style.width = 'auto';
     node.style.height = 'auto';
     node.style.padding = '50px 60px';
-    node.style.paddingRight = '30px';
+    node.style.paddingRight = '40px';
 
-    rightBar.style.marginLeft = '-70px';
+    rightBar.style.marginLeft = '-80px';
     languageAdd.style.display = 'none';
 
     var options = {
@@ -74,7 +74,7 @@ const Preview = ({
         var doc = new jsPDF();
         var img = new Image();
         img.src = dataUrl;
-        doc.addImage(img, 'PNG', 0, 0, 230, 330);
+        doc.addImage(img, 'PNG', 0, 0, 225, 330);
         doc.save('buildmyresume.pdf');
 
         cleanupFunction([node, rightBar, languageAdd]);
