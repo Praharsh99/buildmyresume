@@ -14,7 +14,7 @@ const INITIAL_STATE = {
   loader: false,
   sections: {
     picture: true,
-    profile: false,
+    objective: false,
     birthdate: true,
     martialstatus: false,
     address: true,

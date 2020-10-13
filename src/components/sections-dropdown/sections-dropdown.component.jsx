@@ -27,7 +27,7 @@ const SectionDropdown = ({ sectionsData, toggleSection }) => {
           />
           <SectionRow
             value={sectionsData?.profile}
-            name="profile"
+            name="objective"
             otherName="profile / objective"
             handleChange={handleChange}
           />
