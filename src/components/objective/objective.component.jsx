@@ -22,6 +22,8 @@ const Objective = ({ sectionData, fontSize }) => {
   const style2 = {
     fontSize: `${14 + getTheVariableFontValue(fontSize)}px`,
     padding: '2px 5px',
+    maxWidth: '250px',
+    textAlign: 'justify',
   };
 
   return (

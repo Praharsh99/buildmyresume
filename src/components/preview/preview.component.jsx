@@ -57,7 +57,7 @@ const Preview = ({
     node.style.padding = '50px 60px';
     node.style.paddingRight = '30px';
 
-    rightBar.style.marginLeft = '-100px';
+    rightBar.style.marginLeft = '-70px';
     languageAdd.style.display = 'none';
 
     var options = {

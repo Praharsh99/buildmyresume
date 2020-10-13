@@ -40,6 +40,7 @@ const ProjectSection = ({
     fontSize: `${14 + getTheVariableFontValue(fontSize)}px`,
     fontWeight: '400',
     padding: '3px 5px',
+    textAlign: 'justify',
   };
 
   return (
