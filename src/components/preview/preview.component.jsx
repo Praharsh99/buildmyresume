@@ -31,7 +31,6 @@ const Preview = ({
       toggleLoaderComponent();
 
       // Other stuff
-      document.body.style.overflow = '';
       document.getElementById('preview').classList.add('preview__animate');
     }, 3000);
   });
@@ -40,22 +39,26 @@ const Preview = ({
     backgroundColor: mainColor,
   };
 
-  const handleClick = () => {
-    var node = document.getElementById('resume');
-    node.removeAttribute('style');
-
+  const handleBack = () => {
     setPreviewImage(null);
   };
 
+  const cleanupFunction = (nodes) => {
+    nodes.map((node) => node.removeAttribute('style'));
+  };
+
   const handleDownload = () => {
-    document.getElementById('rightBar').style.marginLeft = '-100px';
-    document.getElementById('language-add').style.display = 'none';
+    const rightBar = document.getElementById('rightBar');
+    const languageAdd = document.getElementById('language-add');
     var node = document.getElementById('resume');
 
     node.style.width = 'auto';
     node.style.height = 'auto';
     node.style.padding = '50px 60px';
     node.style.paddingRight = '30px';
+
+    rightBar.style.marginLeft = '-100px';
+    languageAdd.style.display = 'none';
 
     var options = {
       cacheBust: true,
@@ -74,12 +77,11 @@ const Preview = ({
         doc.addImage(img, 'PNG', 0, 0, 230, 330);
         doc.save('buildmyresume.pdf');
 
-        node.removeAttribute('style');
-        document.getElementById('rightBar').removeAttribute('style');
-        document.getElementById('language-add').removeAttribute('style');
+        cleanupFunction([node, rightBar, languageAdd]);
       })
       .catch(function (error) {
-        console.error('oops, something went wrong!', error);
+        cleanupFunction([node, rightBar, languageAdd]);
+        alert('oops, something went wrong! Try again');
       });
   };
 
@@ -89,7 +91,7 @@ const Preview = ({
         <GetAppIcon style={style} />
       </div>
 
-      <div className="preview__goBack" onClick={handleClick}>
+      <div className="preview__goBack" onClick={handleBack}>
         <ArrowBackIcon />
       </div>
 

@@ -42,3 +42,8 @@ export const toggleLoader = () => ({
 export const setOverflowAlert = () => ({
   type: ResumeActionTypes.SET_OVERFLOW_ALERT,
 });
+
+export const setNewFontSize = (size) => ({
+  type: ResumeActionTypes.SET_NEW_FONT_SIZE,
+  payload: size,
+});

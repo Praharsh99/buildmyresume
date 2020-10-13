@@ -15,6 +15,7 @@ import {
   selectMainColor,
   selectProfilePicture,
   selectOverflowAlert,
+  selectFontSize,
 } from '../../redux/resume/resume.selectors';
 
 import {
@@ -22,17 +23,20 @@ import {
   setMainFont,
   setPreviewImageUrl,
   toggleLoader,
+  setNewFontSize,
 } from '../../redux/resume/resume.actions';
 
 import './tool-bar.styles.css';
 
 const ToolBar = ({
   mainColor,
+  fontSize,
   setNewMainColor,
   setNewMainFont,
   setPreviewImage,
   toggleLoaderComponent,
   overflowAlert,
+  setNewFontSize,
 }) => {
   const [font, setFont] = useState();
   const [colorDropdown, setColorDropdown] = useState(false);
@@ -59,6 +63,16 @@ const ToolBar = ({
     setNewMainFont(e.target.value);
   };
 
+  const handleFontSizeChange = (e) => {
+    if (e.target.tagName.toLowerCase() === 'span') {
+      setNewFontSize(e.target.id);
+    }
+  };
+
+  const cleanupFunction = (nodes) => {
+    nodes.map((node) => node.removeAttribute('style'));
+  };
+
   const handlePreviewClick = (e) => {
     if (!overflowAlert) {
       // Scrolling to top
@@ -67,12 +81,19 @@ const ToolBar = ({
 
       toggleLoaderComponent();
 
-      document.body.style.overflow = 'hidden';
+      const rightBar = document.getElementById('rightBar');
+      const languageAdd = document.getElementById('language-add');
+      const node = document.getElementById('resume');
 
-      var node = document.getElementById('resume');
       node.style.width = 'auto';
+      node.style.height = 'auto';
+      node.style.padding = '50px 60px';
+      node.style.paddingRight = '30px';
 
-      var options = {
+      languageAdd.style.display = 'none';
+      rightBar.style.marginLeft = '-30px';
+
+      const options = {
         cacheBust: true,
         width: '1190',
         height: '1684',
@@ -83,10 +104,14 @@ const ToolBar = ({
         .then(function (dataUrl) {
           setPreviewImage(dataUrl);
 
-          node.removeAttribute('style');
+          cleanupFunction([node, rightBar, languageAdd]);
         })
         .catch(function (error) {
-          console.error('oops, something went wrong!', error);
+          cleanupFunction([node, rightBar, languageAdd]);
+
+          toggleLoaderComponent();
+
+          alert('oops, something went wrong! Try again');
         });
     } else {
       alert(
@@ -119,10 +144,36 @@ const ToolBar = ({
 
         {/* Font Size Selection */}
         <div className="toolBar__textSize">
-          <div>
-            <span>A</span>
-            <span>A</span>
-            <span>A</span>
+          <div onClick={handleFontSizeChange}>
+            <span
+              id="small"
+              title="Small"
+              className={
+                fontSize === 'small' ? 'toolBar__textSize--selected' : undefined
+              }
+            >
+              A
+            </span>
+            <span
+              id="medium"
+              title="Medium"
+              className={
+                fontSize === 'medium'
+                  ? 'toolBar__textSize--selected'
+                  : undefined
+              }
+            >
+              A
+            </span>
+            <span
+              id="large"
+              title="Large"
+              className={
+                fontSize === 'large' ? 'toolBar__textSize--selected' : undefined
+              }
+            >
+              A
+            </span>
           </div>
 
           <div className="toolBar__title">Text Size</div>
@@ -145,14 +196,14 @@ const ToolBar = ({
       {/* 2nd part */}
       <div>
         {/* Save Section */}
-        <div className="toolBar__save toolBar__similar">
+        <div className="toolBar__save toolBar__similar toolbar__underDevelopment">
           <SaveIcon />
 
           <div className="toolBar__title">Save</div>
         </div>
 
         {/* Load Section */}
-        <div className="toolBar__load toolBar__similar">
+        <div className="toolBar__load toolBar__similar toolbar__underDevelopment">
           <BackupIcon />
 
           <div className="toolBar__title">Load</div>
@@ -178,6 +229,7 @@ const mapStateToProps = (state) => ({
   mainColor: selectMainColor(state),
   profilePicture: selectProfilePicture(state),
   overflowAlert: selectOverflowAlert(state),
+  fontSize: selectFontSize(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -185,6 +237,7 @@ const mapDispatchToProps = (dispatch) => ({
   setNewMainFont: (font) => dispatch(setMainFont(font)),
   setPreviewImage: (dataUrl) => dispatch(setPreviewImageUrl(dataUrl)),
   toggleLoaderComponent: () => dispatch(toggleLoader()),
+  setNewFontSize: (size) => dispatch(setNewFontSize(size)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ToolBar);

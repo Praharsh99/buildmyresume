@@ -34,6 +34,7 @@ const INITIAL_STATE = {
   previewImageUrl: null,
   profilePicture: null,
   overflowAlert: false,
+  fontSize: 'medium',
 };
 
 const resumeReducer = (state = INITIAL_STATE, action) => {
@@ -90,6 +91,12 @@ const resumeReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         overflowAlert: !state.overflowAlert,
+      };
+
+    case ResumeActionTypes.SET_NEW_FONT_SIZE:
+      return {
+        ...state,
+        fontSize: action.payload,
       };
 
     default:

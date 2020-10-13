@@ -1,24 +1,29 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { getTheVariableFontValue } from '../../assets/utils';
 
 import ContentInput from '../content-input/content-input.component';
 
-import { selectSections } from '../../redux/resume/resume.selectors';
+import {
+  selectSections,
+  selectFontSize,
+} from '../../redux/resume/resume.selectors';
 
 import './contact.styles.css';
 
-const Contact = ({ sectionData }) => {
+const Contact = ({ sectionData, fontSize }) => {
   const style1 = {
     textTransform: 'uppercase',
-    fontSize: '18px',
+    fontSize: `${18 + getTheVariableFontValue(fontSize)}px`,
     fontWeight: 'bold',
     color: '#000',
   };
 
   const style2 = {
-    fontSize: '13px',
+    fontSize: `${13 + getTheVariableFontValue(fontSize)}px`,
     flex: 0.75,
     padding: '4px 5px',
+    maxWidth: '230px',
   };
 
   return (
@@ -92,6 +97,7 @@ const Contact = ({ sectionData }) => {
 
 const mapStateToProps = (state) => ({
   sectionData: selectSections(state),
+  fontSize: selectFontSize(state),
 });
 
 export default connect(mapStateToProps)(Contact);

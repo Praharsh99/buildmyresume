@@ -122,11 +122,53 @@
   font-size: 44px;
 }
 
+.toolBar__textSize--selected {
+  color: #fff !important;
+}
+
 .toolBar__similar {
+  position: relative;
   padding: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.toolbar__underDevelopment::before {
+  content: 'Comming Soon...';
+  position: absolute;
+  color: #fff;
+  background: rgb(233, 23, 76);
+  border-radius: 8px;
+  padding: 5px 8px;
+  width: 150px;
+  bottom: -45%;
+  left: 50%;
+  text-align: center;
+  transform: translateX(-50%);
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.toolbar__underDevelopment::after {
+  content: '';
+  position: absolute;
+  background: rgb(233, 23, 76);
+  padding: 10px;
+  bottom: -25%;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.toolbar__underDevelopment:hover::before,
+.toolbar__underDevelopment:hover::after {
+  opacity: 1;
 }
 
 .toolBar__similar .MuiSvgIcon-root {

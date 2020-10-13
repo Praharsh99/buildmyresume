@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { getTheVariableFontValue } from '../../assets/utils';
 
 import ContentInput from '../content-input/content-input.component';
 import ProfessionalExpSection from '../professional-exp-section/professional-exp-section.component';
 
+import { selectFontSize } from '../../redux/resume/resume.selectors';
+
 import './professional-experience.style.css';
 
-const ProfessionalExp = ({ className }) => {
+const ProfessionalExp = ({ className, fontSize }) => {
   const [counter, setCounter] = useState(0);
   const [profExpSections, setProfExpSections] = useState([
     {
@@ -16,7 +19,7 @@ const ProfessionalExp = ({ className }) => {
 
   const style1 = {
     textTransform: 'uppercase',
-    fontSize: '18px',
+    fontSize: `${18 + getTheVariableFontValue(fontSize)}px`,
     fontWeight: 'bold',
     color: '#000',
   };
@@ -88,6 +91,8 @@ const ProfessionalExp = ({ className }) => {
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  fontSize: selectFontSize(state),
+});
 
 export default connect(mapStateToProps)(ProfessionalExp);

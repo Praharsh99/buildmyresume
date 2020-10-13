@@ -41,3 +41,8 @@ export const selectOverflowAlert = createSelector(
   [selectResume],
   (resume) => resume.overflowAlert
 );
+
+export const selectFontSize = createSelector(
+  [selectResume],
+  (resume) => resume.fontSize
+);

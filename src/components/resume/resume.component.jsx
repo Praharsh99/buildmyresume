@@ -33,7 +33,7 @@ const Resume = ({ overflowAlert, setOverflowAlert }) => {
     });
 
     resizeObserver.observe(resumeRef.current);
-  }, []);
+  }, [setOverflowAlert]);
 
   const style = {
     height: `${alertHeight}px`,

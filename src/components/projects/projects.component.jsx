@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { getTheVariableFontValue } from '../../assets/utils';
 
 import ContentInput from '../content-input/content-input.component';
 import ProjectSection from '../projects-section/projects-section.component';
 
+import { selectFontSize } from '../../redux/resume/resume.selectors';
+
 import './projects.style.css';
 
-const Projects = ({ className }) => {
+const Projects = ({ className, fontSize }) => {
   const [counter, setCounter] = useState(0);
   const [projectSection, setProjectSection] = useState([
     {
@@ -16,7 +19,7 @@ const Projects = ({ className }) => {
 
   const style1 = {
     textTransform: 'uppercase',
-    fontSize: '18px',
+    fontSize: `${18 + getTheVariableFontValue(fontSize)}px`,
     fontWeight: 'bold',
     color: '#000',
   };
@@ -85,6 +88,8 @@ const Projects = ({ className }) => {
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  fontSize: selectFontSize(state),
+});
 
 export default connect(mapStateToProps)(Projects);

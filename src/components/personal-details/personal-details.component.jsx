@@ -1,31 +1,33 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { getTheVariableFontValue } from '../../assets/utils';
 
 import ContentInput from '../content-input/content-input.component';
 
 import {
   selectMainColor,
   selectSections,
+  selectFontSize,
 } from '../../redux/resume/resume.selectors';
 
 import './personal-details.styles.css';
 
-const PersonalDetails = ({ mainColor, sectionData }) => {
+const PersonalDetails = ({ mainColor, sectionData, fontSize }) => {
   const style1 = {
     textTransform: 'uppercase',
-    fontSize: '18px',
+    fontSize: `${18 + getTheVariableFontValue(fontSize)}px`,
     fontWeight: 'bold',
     color: '#000',
   };
 
   const style2 = {
     color: `${mainColor}`,
-    fontSize: '18px',
+    fontSize: `${18 + getTheVariableFontValue(fontSize)}px`,
     fontWeight: '700',
   };
 
   const style3 = {
-    fontSize: '14px',
+    fontSize: `${14 + getTheVariableFontValue(fontSize)}px`,
     padding: '2px 5px',
   };
 
@@ -104,6 +106,7 @@ const PersonalDetails = ({ mainColor, sectionData }) => {
 const mapStateToProps = (state) => ({
   mainColor: selectMainColor(state),
   sectionData: selectSections(state),
+  fontSize: selectFontSize(state),
 });
 
 export default connect(mapStateToProps)(PersonalDetails);

@@ -7,14 +7,14 @@ import { v4 as uuidv4 } from 'uuid';
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: 'AIzaSyDRu8dYZZNyj9EQzWsEeAsRUyt88JzMOl4',
-  authDomain: 'buildmyresume-3e83c.firebaseapp.com',
-  databaseURL: 'https://buildmyresume-3e83c.firebaseio.com',
-  projectId: 'buildmyresume-3e83c',
-  storageBucket: 'buildmyresume-3e83c.appspot.com',
-  messagingSenderId: '564396714832',
-  appId: '1:564396714832:web:406491fccd437c56ddda55',
-  measurementId: 'G-F7135FHVKC',
+  apiKey: 'AIzaSyDmL4db958jd0XuohloXk2ChfEmS51bcV8',
+  authDomain: 'buildmyresumeonline.firebaseapp.com',
+  databaseURL: 'https://buildmyresumeonline.firebaseio.com',
+  projectId: 'buildmyresumeonline',
+  storageBucket: 'buildmyresumeonline.appspot.com',
+  messagingSenderId: '938528605473',
+  appId: '1:938528605473:web:03fabfaf61b3a1fd466a60',
+  measurementId: 'G-VTY71253PP',
 };
 
 firebase.initializeApp(firebaseConfig);

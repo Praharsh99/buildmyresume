@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { getTheVariableFontValue } from '../../assets/utils';
 
 import ContentInput from '../content-input/content-input.component';
 import EducationSection from '../education-section/education-section.component';
 
+import { selectFontSize } from '../../redux/resume/resume.selectors';
+
 import './eductation.style.css';
 
-const Education = ({ className }) => {
+const Education = ({ className, fontSize }) => {
   const [counter, setCounter] = useState(0);
   const [educationSection, setEducationSection] = useState([
     {
@@ -16,7 +19,7 @@ const Education = ({ className }) => {
 
   const style = {
     textTransform: 'uppercase',
-    fontSize: '18px',
+    fontSize: `${18 + getTheVariableFontValue(fontSize)}px`,
     fontWeight: 'bold',
     color: '#000',
   };
@@ -83,6 +86,8 @@ const Education = ({ className }) => {
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  fontSize: selectFontSize(state),
+});
 
 export default connect(mapStateToProps)(Education);

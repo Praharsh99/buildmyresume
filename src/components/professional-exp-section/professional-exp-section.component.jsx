@@ -1,10 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { getTheVariableFontValue } from '../../assets/utils';
+
 import ContentInput from '../content-input/content-input.component';
 import UtilBtns from '../util-btns/util-btns.component';
 
-import { selectMainColor } from '../../redux/resume/resume.selectors';
+import {
+  selectMainColor,
+  selectFontSize,
+} from '../../redux/resume/resume.selectors';
 
 import './professional-exp-section.style.css';
 
@@ -13,6 +18,7 @@ const ProfessionalExpSection = ({
   id,
   length,
   position,
+  fontSize,
   handleAddClick,
   handleRemoveClick,
   handleSortDownClick,
@@ -23,20 +29,20 @@ const ProfessionalExpSection = ({
   };
 
   const style2 = {
-    fontSize: '18px',
+    fontSize: `${18 + getTheVariableFontValue(fontSize)}px`,
     color: `${mainColor}`,
     fontWeight: '700',
   };
 
   const style3 = {
     textTransform: 'uppercase',
-    fontSize: '14px',
+    fontSize: `${14 + getTheVariableFontValue(fontSize)}px`,
     fontWeight: '600',
     padding: '2px 5px',
   };
 
   const style4 = {
-    fontSize: '14px',
+    fontSize: `${14 + getTheVariableFontValue(fontSize)}px`,
     fontWeight: '400',
     padding: '3px 5px',
   };
@@ -82,6 +88,7 @@ const ProfessionalExpSection = ({
 
 const mapStateToProps = (state) => ({
   mainColor: selectMainColor(state),
+  fontSize: selectFontSize(state),
 });
 
 export default connect(mapStateToProps)(ProfessionalExpSection);
