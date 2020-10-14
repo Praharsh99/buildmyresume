@@ -135,7 +135,7 @@
 }
 
 .toolbar__underDevelopment::before {
-  content: 'Comming Soon...';
+  content: 'Coming Soon...';
   position: absolute;
   color: #fff;
   background: rgb(233, 23, 76);

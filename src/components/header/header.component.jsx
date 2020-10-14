@@ -33,7 +33,12 @@ const Header = ({ mainColor, sectionData, fontSize }) => {
       />
 
       <div className="header__details">
-        <ContentInput placeholderBold placeholder="Your Name" style={style1} />
+        <ContentInput
+          placeholderBold
+          id="username__field"
+          placeholder="Your Name"
+          style={style1}
+        />
 
         <ContentInput
           placeholder="Your Profession or Speciality"

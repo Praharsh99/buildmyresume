@@ -88,10 +88,10 @@ const ToolBar = ({
       node.style.width = 'auto';
       node.style.height = 'auto';
       node.style.padding = '50px 60px';
-      node.style.paddingRight = '30px';
+      node.style.paddingRight = '40px';
 
       languageAdd.style.display = 'none';
-      rightBar.style.marginLeft = '-30px';
+      rightBar.style.marginLeft = '-60px';
 
       const options = {
         cacheBust: true,

@@ -3,9 +3,6 @@ import React, { useState } from 'react';
 import Modal from '../modal/modal.component';
 
 import { Avatar } from '@material-ui/core';
-import FacebookIcon from '@material-ui/icons/Facebook';
-import TwitterIcon from '@material-ui/icons/Twitter';
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
 
 import './footer.styles.css';
 
@@ -73,18 +70,21 @@ const Footer = () => {
           <span>Support</span>
         </a>
       </div>
-
-      <div>
-        <span>share</span>
-
-        <div className="footer__socialLinks">
-          <FacebookIcon />
-          <TwitterIcon />
-          <LinkedInIcon />
-        </div>
-      </div>
     </div>
   );
 };
 
 export default Footer;
+
+// import FacebookIcon from '@material-ui/icons/Facebook';
+// import TwitterIcon from '@material-ui/icons/Twitter';
+// import LinkedInIcon from '@material-ui/icons/LinkedIn';
+// <div>
+//         <span>share</span>
+
+//         <div className="footer__socialLinks">
+//           <FacebookIcon />
+//           <TwitterIcon />
+//           <LinkedInIcon />
+//         </div>
+//       </div>

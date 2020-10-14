@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { jsPDF } from 'jspdf';
-import domtoimage from 'dom-to-image';
 
 import GetAppIcon from '@material-ui/icons/GetApp';
 
@@ -43,46 +42,19 @@ const Preview = ({
     setPreviewImage(null);
   };
 
-  const cleanupFunction = (nodes) => {
-    nodes.map((node) => node.removeAttribute('style'));
-  };
-
   const handleDownload = () => {
-    const rightBar = document.getElementById('rightBar');
-    const languageAdd = document.getElementById('language-add');
-    var node = document.getElementById('resume');
+    var doc = new jsPDF();
+    var img = new Image();
 
-    node.style.width = 'auto';
-    node.style.height = 'auto';
-    node.style.padding = '50px 60px';
-    node.style.paddingRight = '40px';
+    const username = document
+      .getElementById('username__field')
+      .textContent.trim()
+      .toLowerCase();
 
-    rightBar.style.marginLeft = '-80px';
-    languageAdd.style.display = 'none';
+    img.src = previewImage;
 
-    var options = {
-      cacheBust: true,
-      width: '1190',
-      height: '1684',
-    };
-
-    domtoimage
-      .toPng(node, options)
-      .then(function (dataUrl) {
-        node.removeAttribute('style');
-
-        var doc = new jsPDF();
-        var img = new Image();
-        img.src = dataUrl;
-        doc.addImage(img, 'PNG', 0, 0, 225, 330);
-        doc.save('buildmyresume.pdf');
-
-        cleanupFunction([node, rightBar, languageAdd]);
-      })
-      .catch(function (error) {
-        cleanupFunction([node, rightBar, languageAdd]);
-        alert('oops, something went wrong! Try again');
-      });
+    doc.addImage(img, 'PNG', 0, 0, 225, 330);
+    doc.save(username ? `${username}'s resume.pdf` : 'buildmyresume.pdf');
   };
 
   return (
