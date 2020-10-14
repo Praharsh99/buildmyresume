@@ -97,6 +97,7 @@ const ToolBar = ({
         cacheBust: true,
         width: '1190',
         height: '1684',
+        dpi: 96 * 6,
       };
 
       domtoimage

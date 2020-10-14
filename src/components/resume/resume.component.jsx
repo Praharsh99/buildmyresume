@@ -36,7 +36,7 @@ const Resume = ({ overflowAlert, setOverflowAlert }) => {
   }, [setOverflowAlert]);
 
   const style = {
-    height: `${alertHeight}px`,
+    height: `${alertHeight + 15}px`,
   };
 
   return (
