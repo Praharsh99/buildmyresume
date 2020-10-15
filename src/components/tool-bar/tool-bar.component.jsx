@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import domtoimage from 'dom-to-image';
 
+import { downloadPDF } from '../../assets/utils';
+
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import SaveIcon from '@material-ui/icons/Save';
 import BackupIcon from '@material-ui/icons/Backup';
 import GetAppIcon from '@material-ui/icons/GetApp';
+import VisibilityIcon from '@material-ui/icons/Visibility';
 
 import SectionDropdown from '../sections-dropdown/sections-dropdown.component';
 import ColorDropdown from '../color-dropdown/color-dropdown.component';
@@ -73,7 +76,7 @@ const ToolBar = ({
     nodes.map((node) => node.removeAttribute('style'));
   };
 
-  const handlePreviewClick = (e) => {
+  const handlePreviewAndDownloadClick = (e, type) => {
     if (!overflowAlert) {
       // Scrolling to top
       document.body.scrollTop = 0;
@@ -103,8 +106,14 @@ const ToolBar = ({
       domtoimage
         .toPng(node, options)
         .then(function (dataUrl) {
-          setPreviewImage(dataUrl);
+          if (type === 'preview') setPreviewImage(dataUrl);
+          else {
+            downloadPDF(dataUrl);
 
+            toggleLoaderComponent();
+          }
+
+          // Cleaning up
           cleanupFunction([node, rightBar, languageAdd]);
         })
         .catch(function (error) {
@@ -133,7 +142,12 @@ const ToolBar = ({
           ></span>
           <span className="toolBar__title">Color</span>
 
-          {colorDropdown && <ColorDropdown handleNewColor={handleNewColor} />}
+          {colorDropdown && (
+            <ColorDropdown
+              handleNewColor={handleNewColor}
+              toggleColorDropdown={setColorDropdown}
+            />
+          )}
         </div>
 
         {/* Fonts Selection */}
@@ -188,7 +202,7 @@ const ToolBar = ({
 
           {sectionDropdown && (
             <div className="toolBar__sectionDropdown">
-              <SectionDropdown />
+              <SectionDropdown toggleSectionDropdown={setSectionDropdown} />
             </div>
           )}
         </div>
@@ -214,9 +228,17 @@ const ToolBar = ({
       {/* 3rd part */}
       <div>
         <div
+          className="toolBar__utils"
+          onClick={(e) => handlePreviewAndDownloadClick(e, 'preview')}
+        >
+          <VisibilityIcon />
+          <span>Preview</span>
+        </div>
+
+        <div
           className="toolBar__download toolBar__utils"
           style={{ background: mainColor }}
-          onClick={handlePreviewClick}
+          onClick={(e) => handlePreviewAndDownloadClick(e, 'download')}
         >
           <GetAppIcon />
           <span>Download PDF</span>

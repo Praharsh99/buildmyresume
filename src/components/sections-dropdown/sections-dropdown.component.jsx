@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import SectionRow from '../section-row/section-row.component';
@@ -8,7 +8,28 @@ import { toggleSection } from '../../redux/resume/resume.actions';
 
 import './sections-dropdown.style.css';
 
-const SectionDropdown = ({ sectionsData, toggleSection }) => {
+const SectionDropdown = ({
+  sectionsData,
+  toggleSection,
+  toggleSectionDropdown,
+}) => {
+  const handleOutsideClick = (e) => {
+    const node = document.getElementById('sectionDropdown');
+
+    if (!node.contains(e.target)) {
+      // Clicked outside the box
+      toggleSectionDropdown(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('click', handleOutsideClick);
+
+    return () => {
+      document.removeEventListener('click', handleOutsideClick);
+    };
+  }, []);
+
   const handleChange = (e) => {
     const { name } = e.target;
 
@@ -16,7 +37,7 @@ const SectionDropdown = ({ sectionsData, toggleSection }) => {
   };
 
   return (
-    <div className="sectionDropdown">
+    <div className="sectionDropdown" id="sectionDropdown">
       <div className="sectionDropdown__left">
         {/* Left 1st part */}
         <div className="sectionDropdown__section">

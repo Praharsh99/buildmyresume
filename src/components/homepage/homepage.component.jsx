@@ -5,7 +5,7 @@ import Footer from '../footer/footer.component';
 import { Button } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 
-import { ReactComponent as Illustration } from '../../assets/homepage__illustration.svg';
+import { ReactComponent as Illustration } from '../../assets/svg/homepage__illustration.svg';
 
 import './homepage.style.css';
 

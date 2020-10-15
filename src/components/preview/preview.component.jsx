@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { jsPDF } from 'jspdf';
+
+import { downloadPDF } from '../../assets/utils';
 
 import GetAppIcon from '@material-ui/icons/GetApp';
 
@@ -43,18 +44,7 @@ const Preview = ({
   };
 
   const handleDownload = () => {
-    var doc = new jsPDF();
-    var img = new Image();
-
-    const username = document
-      .getElementById('username__field')
-      .textContent.trim()
-      .toLowerCase();
-
-    img.src = previewImage;
-
-    doc.addImage(img, 'PNG', 0, 0, 225, 330);
-    doc.save(username ? `${username}'s resume.pdf` : 'buildmyresume.pdf');
+    downloadPDF(previewImage);
   };
 
   return (

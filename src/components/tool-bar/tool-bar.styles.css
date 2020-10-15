@@ -220,10 +220,20 @@
   border-radius: 10px;
   cursor: pointer;
   padding: 20px 30px;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.toolBar__utils .MuiSvgIcon-root {
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .toolBar__download .MuiSvgIcon-root {
-  color: rgba(0, 0, 0, 0.6);
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.toolBar__utils:hover .MuiSvgIcon-root {
+  color: #fff;
 }
 
 .toolBar__download:hover .MuiSvgIcon-root {
