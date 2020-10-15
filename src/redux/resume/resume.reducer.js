@@ -35,6 +35,7 @@ const INITIAL_STATE = {
   profilePicture: null,
   overflowAlert: false,
   fontSize: 'medium',
+  customParagraph: false,
 };
 
 const resumeReducer = (state = INITIAL_STATE, action) => {

@@ -3,22 +3,22 @@ import React, { useEffect } from 'react';
 import './color-dropdown.style.css';
 
 const ColorDropdown = ({ handleNewColor, toggleColorDropdown }) => {
-  const handleOutsideClick = (e) => {
-    const node = document.getElementById('colorDropdown');
-
-    if (!node.contains(e.target)) {
-      // Clicked outside the box
-      toggleColorDropdown(false);
-    }
-  };
-
   useEffect(() => {
+    const handleOutsideClick = (e) => {
+      const node = document.getElementById('colorDropdown');
+
+      if (!node.contains(e.target)) {
+        // Clicked outside the box
+        toggleColorDropdown(false);
+      }
+    };
+
     document.addEventListener('click', handleOutsideClick);
 
     return () => {
       document.removeEventListener('click', handleOutsideClick);
     };
-  }, []);
+  }, [toggleColorDropdown]);
 
   return (
     <div

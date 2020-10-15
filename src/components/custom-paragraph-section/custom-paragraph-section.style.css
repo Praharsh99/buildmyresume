@@ -1,0 +1,15 @@
+.customParagraph__section {
+  position: relative;
+  margin: 4px 0;
+  padding: 4px;
+  border: 2px dashed transparent;
+  transition: all 0.2s ease;
+}
+
+.customParagraph__section:hover {
+  border-color: #d1d1d1;
+}
+
+.customParagraph__section:hover .utilBtns {
+  opacity: 1;
+}

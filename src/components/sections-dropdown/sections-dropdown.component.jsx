@@ -13,22 +13,22 @@ const SectionDropdown = ({
   toggleSection,
   toggleSectionDropdown,
 }) => {
-  const handleOutsideClick = (e) => {
-    const node = document.getElementById('sectionDropdown');
-
-    if (!node.contains(e.target)) {
-      // Clicked outside the box
-      toggleSectionDropdown(false);
-    }
-  };
-
   useEffect(() => {
+    const handleOutsideClick = (e) => {
+      const node = document.getElementById('sectionDropdown');
+
+      if (!node.contains(e.target)) {
+        // Clicked outside the box
+        toggleSectionDropdown(false);
+      }
+    };
+
     document.addEventListener('click', handleOutsideClick);
 
     return () => {
       document.removeEventListener('click', handleOutsideClick);
     };
-  }, []);
+  }, [toggleSectionDropdown]);
 
   const handleChange = (e) => {
     const { name } = e.target;
@@ -150,6 +150,16 @@ const SectionDropdown = ({
           <SectionRow
             name="skills"
             value={sectionsData?.skills}
+            handleChange={handleChange}
+          />
+        </div>
+
+        {/* Right 3rd part */}
+        <div className="sectionDropdown__section">
+          <SectionRow
+            name="customParagraph"
+            otherName="Custom Paragraph"
+            value={sectionsData?.customParagraph}
             handleChange={handleChange}
           />
         </div>

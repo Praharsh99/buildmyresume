@@ -5,6 +5,7 @@ import Education from '../education/education.component';
 import ProfessionalExp from '../professional-experience/professional-experience.component';
 import Projects from '../projects/projects.component';
 import Skills from '../skills/skills.component';
+import CustomParagraph from '../custom-paragraph/custom-paragraph.component';
 
 import { selectSections } from '../../redux/resume/resume.selectors';
 
@@ -20,6 +21,10 @@ const RightBar = ({ sectionData }) => {
       <Projects className={!sectionData['projects'] && 'section--disabled'} />
 
       <Education className={!sectionData['education'] && 'section--disabled'} />
+
+      <CustomParagraph
+        className={!sectionData['customParagraph'] && 'section--disabled'}
+      />
 
       <Skills className={!sectionData['skills'] && 'section--disabled'} />
     </div>
