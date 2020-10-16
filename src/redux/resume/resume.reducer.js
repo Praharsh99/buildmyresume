@@ -30,12 +30,13 @@ const INITIAL_STATE = {
     projects: false,
     education: true,
     skills: false,
+    customParagraph: false,
+    customList: false,
   },
   previewImageUrl: null,
   profilePicture: null,
   overflowAlert: false,
   fontSize: 'medium',
-  customParagraph: false,
 };
 
 const resumeReducer = (state = INITIAL_STATE, action) => {

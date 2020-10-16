@@ -29,7 +29,7 @@
   min-height: 30px;
 }
 
-.footer > div:not(:last-of-type):hover {
+.footer > div:hover {
   color: #fff;
 }
 
@@ -40,8 +40,8 @@
 .footer > div .MuiAvatar-root {
   width: 30px;
   height: 30px;
-  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
   margin-right: 15px;
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.3);
 }
 
 .footer > div > a > img {

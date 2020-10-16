@@ -156,12 +156,30 @@ const SectionDropdown = ({
 
         {/* Right 3rd part */}
         <div className="sectionDropdown__section">
-          <SectionRow
-            name="customParagraph"
-            otherName="Custom Paragraph"
-            value={sectionsData?.customParagraph}
-            handleChange={handleChange}
-          />
+          <div className="sectionDropdown__sectionCustom">
+            <span>Ideal for listing interests, references or awards.</span>
+            <SectionRow
+              name="customParagraph"
+              otherName="Custom Paragraph"
+              value={sectionsData?.customParagraph}
+              handleChange={handleChange}
+            />
+          </div>
+        </div>
+
+        <div className="sectionDropdown__section">
+          <div className="sectionDropdown__sectionCustom">
+            <span>
+              Ideal for listing the most relevant skills for the type of job
+              you'll be applying.
+            </span>
+            <SectionRow
+              name="customList"
+              otherName="Custom List"
+              value={sectionsData?.customList}
+              handleChange={handleChange}
+            />
+          </div>
         </div>
       </div>
     </div>

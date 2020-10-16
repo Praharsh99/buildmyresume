@@ -1,0 +1,32 @@
+.customList__section {
+  position: relative;
+  padding: 10px;
+  padding-left: 0px;
+  border: 2px dashed transparent;
+  transition: all 0.2s ease;
+}
+
+.customList__section:hover {
+  border-color: #d1d1d1;
+}
+
+.customList__section:hover .utilBtns {
+  opacity: 1;
+}
+
+.customList__sectionItem {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.customList__sectionItem > .contentInput {
+  margin-left: 12px;
+  margin-right: 5px;
+  width: 250px !important;
+}
+
+.customList__sectionItem > .MuiSvgIcon-root {
+  font-size: 22px;
+  color: #636363;
+}

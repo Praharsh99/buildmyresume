@@ -18,7 +18,7 @@ import {
 import { toggleLoader } from './redux/resume/resume.actions';
 
 import './App.css';
-import './assets/google-fonts.css';
+import './assets/css/google-fonts.css';
 
 function App({ mainColor, previewImage, loader, toggleLoader }) {
   const [loadContent, setLoadContent] = useState(false);

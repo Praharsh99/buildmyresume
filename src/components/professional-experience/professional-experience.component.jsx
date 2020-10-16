@@ -1,28 +1,17 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import { getTheVariableFontValue } from '../../assets/utils';
 
-import ContentInput from '../content-input/content-input.component';
+import MainHeading from '../main-heading/main-heading.component';
 import ProfessionalExpSection from '../professional-exp-section/professional-exp-section.component';
-
-import { selectFontSize } from '../../redux/resume/resume.selectors';
 
 import './professional-experience.style.css';
 
-const ProfessionalExp = ({ className, fontSize }) => {
+const ProfessionalExp = ({ className }) => {
   const [counter, setCounter] = useState(0);
   const [profExpSections, setProfExpSections] = useState([
     {
       id: counter,
     },
   ]);
-
-  const style1 = {
-    textTransform: 'uppercase',
-    fontSize: `${18 + getTheVariableFontValue(fontSize)}px`,
-    fontWeight: 'bold',
-    color: '#000',
-  };
 
   const handleAddClick = (e) => {
     setProfExpSections([
@@ -64,10 +53,9 @@ const ProfessionalExp = ({ className, fontSize }) => {
 
   return (
     <div className={`professionalExperience ${className}`}>
-      <ContentInput
+      <MainHeading
         placeholder="Professional Experience"
         content="Professional Experience"
-        style={style1}
       />
 
       <div
@@ -91,8 +79,4 @@ const ProfessionalExp = ({ className, fontSize }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  fontSize: selectFontSize(state),
-});
-
-export default connect(mapStateToProps)(ProfessionalExp);
+export default ProfessionalExp;

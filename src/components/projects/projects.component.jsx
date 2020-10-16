@@ -1,28 +1,17 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import { getTheVariableFontValue } from '../../assets/utils';
 
-import ContentInput from '../content-input/content-input.component';
+import MainHeading from '../main-heading/main-heading.component';
 import ProjectSection from '../projects-section/projects-section.component';
-
-import { selectFontSize } from '../../redux/resume/resume.selectors';
 
 import './projects.style.css';
 
-const Projects = ({ className, fontSize }) => {
+const Projects = ({ className }) => {
   const [counter, setCounter] = useState(0);
   const [projectSection, setProjectSection] = useState([
     {
       id: counter,
     },
   ]);
-
-  const style1 = {
-    textTransform: 'uppercase',
-    fontSize: `${18 + getTheVariableFontValue(fontSize)}px`,
-    fontWeight: 'bold',
-    color: '#000',
-  };
 
   const handleAddClick = (e) => {
     setProjectSection([
@@ -64,11 +53,7 @@ const Projects = ({ className, fontSize }) => {
 
   return (
     <div className={`projects ${className}`}>
-      <ContentInput
-        placeholder="Projects"
-        content="Personal Projects"
-        style={style1}
-      />
+      <MainHeading placeholder="Projects" content="Personal Projects" />
 
       <div className="projects__sub">
         {projectSection?.map((item, position) => (
@@ -88,8 +73,4 @@ const Projects = ({ className, fontSize }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  fontSize: selectFontSize(state),
-});
-
-export default connect(mapStateToProps)(Projects);
+export default Projects;

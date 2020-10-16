@@ -1,0 +1,7 @@
+.customList__sub {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0px 15px;
+  padding-top: 5px;
+}

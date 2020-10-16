@@ -1,7 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { getTheVariableFontValue } from '../../assets/utils';
 
 import ContentInput from '../content-input/content-input.component';
+
+import { selectFontSize } from '../../redux/resume/resume.selectors';
 
 import './main-heading.style.css';
 
@@ -22,4 +25,8 @@ const MainHeading = ({ fontSize, placeholder, content }) => {
   );
 };
 
-export default MainHeading;
+const mapStateToProps = (state) => ({
+  fontSize: selectFontSize(state),
+});
+
+export default connect(mapStateToProps)(MainHeading);

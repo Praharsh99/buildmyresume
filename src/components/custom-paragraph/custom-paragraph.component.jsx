@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
 
 import MainHeading from '../main-heading/main-heading.component';
 import CustomParagraphSection from '../custom-paragraph-section/custom-paragraph-section.component';
 
-import { selectFontSize } from '../../redux/resume/resume.selectors';
-
 import './custom-paragraph.style.css';
 
-const CustomParagraph = ({ className, fontSize }) => {
+const CustomParagraph = ({ className }) => {
   const [counter, setCounter] = useState(0);
   const [paragraphSection, setParagraphSection] = useState([
     {
@@ -58,11 +55,7 @@ const CustomParagraph = ({ className, fontSize }) => {
 
   return (
     <div className={`customParagraph ${className}`}>
-      <MainHeading
-        fontSize={fontSize}
-        placeholder="Custom Heading"
-        content="Custom Heading"
-      />
+      <MainHeading placeholder="Custom Heading" content="Custom Heading" />
 
       <div className="customParagraph__sub">
         {paragraphSection.map((item, position) => (
@@ -82,8 +75,4 @@ const CustomParagraph = ({ className, fontSize }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  fontSize: selectFontSize(state),
-});
-
-export default connect(mapStateToProps)(CustomParagraph);
+export default CustomParagraph;

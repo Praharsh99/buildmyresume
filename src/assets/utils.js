@@ -20,10 +20,11 @@ export const downloadPDF = (dataUrl) => {
   var doc = new jsPDF();
   var img = new Image();
 
-  const username = document
-    .getElementById('username__field')
-    .textContent.trim()
-    .toLowerCase();
+  const username =
+    document
+      .getElementById('username__field')
+      .textContent.trim()
+      .toLowerCase() || null;
 
   img.src = dataUrl;
 

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { getTheVariableFontValue } from '../../assets/utils';
 
 import ContentInput from '../content-input/content-input.component';
+import MainHeading from '../main-heading/main-heading.component';
 
 import {
   selectSections,
@@ -12,14 +13,7 @@ import {
 import './contact.styles.css';
 
 const Contact = ({ sectionData, fontSize }) => {
-  const style1 = {
-    textTransform: 'uppercase',
-    fontSize: `${18 + getTheVariableFontValue(fontSize)}px`,
-    fontWeight: 'bold',
-    color: '#000',
-  };
-
-  const style2 = {
+  const style = {
     fontSize: `${13 + getTheVariableFontValue(fontSize)}px`,
     flex: 0.75,
     padding: '4px 5px',
@@ -28,7 +22,7 @@ const Contact = ({ sectionData, fontSize }) => {
 
   return (
     <div className="contact">
-      <ContentInput placeholder="Contact" style={style1} content="Contact" />
+      <MainHeading placeholder="Contact" content="Contact" />
 
       <div className="contact__sub">
         <div
@@ -40,7 +34,7 @@ const Contact = ({ sectionData, fontSize }) => {
             src="https://img.icons8.com/color/48/000000/gmail.png"
             alt="Email"
           />
-          <ContentInput placeholder="Email address" style={style2} />
+          <ContentInput placeholder="Email address" style={style} />
         </div>
 
         <div
@@ -52,7 +46,7 @@ const Contact = ({ sectionData, fontSize }) => {
             src="https://img.icons8.com/color/48/000000/nokia-3310.png"
             alt="Phone"
           />
-          <ContentInput placeholder="Mobile Number" style={style2} />
+          <ContentInput placeholder="Mobile Number" style={style} />
         </div>
 
         <div
@@ -64,7 +58,7 @@ const Contact = ({ sectionData, fontSize }) => {
             src="https://img.icons8.com/fluent/48/000000/linkedin.png"
             alt="Linkedin"
           />
-          <ContentInput placeholder="Linkedin account link" style={style2} />
+          <ContentInput placeholder="Linkedin account link" style={style} />
         </div>
 
         <div
@@ -76,7 +70,7 @@ const Contact = ({ sectionData, fontSize }) => {
             src="https://img.icons8.com/fluent/64/000000/github.png"
             alt="Github"
           />
-          <ContentInput placeholder="Github account link" style={style2} />
+          <ContentInput placeholder="Github account link" style={style} />
         </div>
 
         <div
@@ -88,7 +82,7 @@ const Contact = ({ sectionData, fontSize }) => {
             src="https://img.icons8.com/fluent/48/000000/code.png"
             alt="Portfolio"
           />
-          <ContentInput placeholder="Portfolio link" style={style2} />
+          <ContentInput placeholder="Portfolio link" style={style} />
         </div>
       </div>
     </div>

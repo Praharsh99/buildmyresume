@@ -6,7 +6,6 @@ const SectionRow = ({
   name,
   value,
   disabled = false,
-  checked = false,
   otherName,
   handleChange,
 }) => {

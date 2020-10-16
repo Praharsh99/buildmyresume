@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getTheVariableFontValue } from '../../assets/utils';
 
+import MainHeading from '../main-heading/main-heading.component';
 import ContentInput from '../content-input/content-input.component';
 
 import {
@@ -14,19 +15,12 @@ import './personal-details.styles.css';
 
 const PersonalDetails = ({ mainColor, sectionData, fontSize }) => {
   const style1 = {
-    textTransform: 'uppercase',
-    fontSize: `${18 + getTheVariableFontValue(fontSize)}px`,
-    fontWeight: 'bold',
-    color: '#000',
-  };
-
-  const style2 = {
     color: `${mainColor}`,
     fontSize: `${18 + getTheVariableFontValue(fontSize)}px`,
     fontWeight: '700',
   };
 
-  const style3 = {
+  const style2 = {
     fontSize: `${14 + getTheVariableFontValue(fontSize)}px`,
     padding: '2px 5px',
     maxWidth: '250px',
@@ -34,11 +28,7 @@ const PersonalDetails = ({ mainColor, sectionData, fontSize }) => {
 
   return (
     <div className="personalDetails">
-      <ContentInput
-        placeholder="Personal Details"
-        style={style1}
-        content="Personal Details"
-      />
+      <MainHeading placeholder="Personal Details" content="Personal Details" />
 
       <div className="personalDetails__sub">
         <div
@@ -49,10 +39,10 @@ const PersonalDetails = ({ mainColor, sectionData, fontSize }) => {
           <ContentInput
             placeholder="Birth Date"
             content="Birth Date"
-            style={style2}
+            style={style1}
           />
 
-          <ContentInput placeholder="Enter your birth date" style={style3} />
+          <ContentInput placeholder="Enter your birth date" style={style2} />
         </div>
 
         <div
@@ -63,10 +53,10 @@ const PersonalDetails = ({ mainColor, sectionData, fontSize }) => {
           <ContentInput
             placeholder="Nationality"
             content="Nationality"
-            style={style2}
+            style={style1}
           />
 
-          <ContentInput placeholder="Enter your nationality" style={style3} />
+          <ContentInput placeholder="Enter your nationality" style={style2} />
         </div>
 
         <div
@@ -77,10 +67,10 @@ const PersonalDetails = ({ mainColor, sectionData, fontSize }) => {
           <ContentInput
             placeholder="Address"
             content="Address"
-            style={style2}
+            style={style1}
           />
 
-          <ContentInput placeholder="Enter your address" style={style3} />
+          <ContentInput placeholder="Enter your address" style={style2} />
         </div>
 
         <div
@@ -91,12 +81,12 @@ const PersonalDetails = ({ mainColor, sectionData, fontSize }) => {
           <ContentInput
             placeholder="Martial Status"
             content="Martial Status"
-            style={style2}
+            style={style1}
           />
 
           <ContentInput
             placeholder="Enter your martial status"
-            style={style3}
+            style={style2}
           />
         </div>
       </div>

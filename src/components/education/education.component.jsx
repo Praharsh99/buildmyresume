@@ -1,28 +1,17 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import { getTheVariableFontValue } from '../../assets/utils';
 
-import ContentInput from '../content-input/content-input.component';
 import EducationSection from '../education-section/education-section.component';
-
-import { selectFontSize } from '../../redux/resume/resume.selectors';
+import MainHeading from '../main-heading/main-heading.component';
 
 import './eductation.style.css';
 
-const Education = ({ className, fontSize }) => {
+const Education = ({ className }) => {
   const [counter, setCounter] = useState(0);
   const [educationSection, setEducationSection] = useState([
     {
       id: counter,
     },
   ]);
-
-  const style = {
-    textTransform: 'uppercase',
-    fontSize: `${18 + getTheVariableFontValue(fontSize)}px`,
-    fontWeight: 'bold',
-    color: '#000',
-  };
 
   const handleAddClick = (e) => {
     setEducationSection([
@@ -66,7 +55,7 @@ const Education = ({ className, fontSize }) => {
 
   return (
     <div className={`education ${className}`}>
-      <ContentInput placeholder="Education" content="Education" style={style} />
+      <MainHeading placeholder="Education" content="Education" />
 
       <div className="education__sub">
         {educationSection?.map((item, position) => (
@@ -86,8 +75,4 @@ const Education = ({ className, fontSize }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  fontSize: selectFontSize(state),
-});
-
-export default connect(mapStateToProps)(Education);
+export default Education;
