@@ -55,7 +55,10 @@ const CustomParagraph = ({ className }) => {
 
   return (
     <div className={`customParagraph ${className}`}>
-      <MainHeading placeholder="Custom Heading" content="Custom Heading" />
+      <MainHeading
+        placeholder="Add Custom Heading"
+        content="Add Custom Heading"
+      />
 
       <div className="customParagraph__sub">
         {paragraphSection.map((item, position) => (

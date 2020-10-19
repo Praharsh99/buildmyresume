@@ -4,8 +4,7 @@ import { connect } from 'react-redux';
 import { downloadPDF } from '../../assets/utils';
 
 import GetAppIcon from '@material-ui/icons/GetApp';
-
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import EditIcon from '@material-ui/icons/Edit';
 
 import {
   selectMainColor,
@@ -54,7 +53,7 @@ const Preview = ({
       </div>
 
       <div className="preview__goBack" onClick={handleBack}>
-        <ArrowBackIcon />
+        <EditIcon />
       </div>
 
       <img id="resume-preview" src={previewImage} alt="Preview" />

@@ -56,7 +56,7 @@ const CustomList = ({ className }) => {
 
   return (
     <div className={`customList ${className}`}>
-      <MainHeading placeholder="Custom List" content="Custom List" />
+      <MainHeading placeholder="Add Custom List" content="Add Custom List" />
 
       <div className="customList__sub">
         {listSection?.map((item, position) => (

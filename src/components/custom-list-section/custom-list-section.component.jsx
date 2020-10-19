@@ -48,7 +48,7 @@ const CustomListSection = ({
       <div className="customList__sectionItem">
         <LabelIcon />
 
-        <ContentInput placeholder="Custom List Item" style={style} />
+        <ContentInput placeholder="Add Custom List Item" style={style} />
       </div>
     </div>
   );

@@ -50,7 +50,11 @@ const CustomParagraphSection = ({
         id={id}
       />
 
-      <ContentInput placeholder="Custom Title" placeholderBold style={style1} />
+      <ContentInput
+        placeholder="Add Custom Title"
+        placeholderBold
+        style={style1}
+      />
 
       <ContentInput
         placeholder="This is the custom description area for you. Fill this area with content that goes with the heading. Please try to minimize the content that you want to display, a few bullet points are a good option"
