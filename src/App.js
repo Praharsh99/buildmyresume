@@ -67,6 +67,10 @@ function App({ mainColor, previewImage, loader, toggleLoader }) {
           <Loader />
         </div>
       )}
+
+      <div className="app__smallScreenMessage">
+        <h3>Not compatible for this screen size! {'😲'}</h3>
+      </div>
     </div>
   );
 }
